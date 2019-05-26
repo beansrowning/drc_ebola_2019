@@ -1,4 +1,4 @@
-# DRC Health Zone shape file  
-> Courtesy of OCHA
+# DRC Health Zone and District shape file  
+> Courtesy of WHO
 
-Source: https://data.humdata.org/dataset/dr-congo-health-0
+Source: https://data.humdata.org/dataset/democratic-republic-of-congo-health-boundaries
