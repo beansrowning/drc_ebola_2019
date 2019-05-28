@@ -101,7 +101,7 @@ for (rpt_date in report_dates) {
       geom_sf(aes(fill = total_cases)) +
       scale_fill_distiller(palette = "OrRd", limits = c(0, 600)) +
       labs(
-        title = "Total Ebola Cases in Democratic Republic of Congo by Health Zone",
+        title = "Total Ebola Cases in Democratic Republic of Congo by District",
         subtitle = as.character(as_date(rpt_date), format = "%d %B %Y"),
         fill = "Total Cases"
       ) +
@@ -117,4 +117,4 @@ for (rpt_date in report_dates) {
 }
 
 # Make a GIF
-gifski(list.files("output", full.names = TRUE), gif_file = "output/viz.gif", width = 1680, height = 1000, delay = 0.2)
+gifski(list.files("output", pattern = "^.*\\.png$", full.names = TRUE), gif_file = "output/viz.gif", width = 1680, height = 1000, delay = 0.1)
