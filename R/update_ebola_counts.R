@@ -22,7 +22,7 @@ dataset <- pull_dataset("383945db-762c-46e2-bec6-07adc41fbd16")
 health_zone_figures <- dataset %>%
   get_resource(2) %>%
   read_resource(folder = tmp_folder) %>%
-  write_csv(file.path(data_folder, paste(Sys.Date(), "health_zone_counts.csv", sep = "-")))
+  write_csv(file.path(data_folder,"health_zone_counts.csv"))
 
 # === Download shapefiles ================================================== #
 # https://data.humdata.org/dataset/democratic-republic-of-congo-health-boundaries
