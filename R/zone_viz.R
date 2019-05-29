@@ -79,6 +79,9 @@ pb <- progress_bar$new(
   total = length(report_dates)
 )
 
+caption_unicode <- "Source: Ministère de la Santé, DRC"
+Encoding(caption_unicode) <- "UTF-8"
+
 # === Iterate over every report date and render a separate PNG ========================= #
 # NOTE: Could be made much faster with foreach / parallelized code
 for (rpt_date in report_dates) {
@@ -91,7 +94,7 @@ for (rpt_date in report_dates) {
       labs(
         x = "Date Reported",
         y = "New Cases (n)",
-        caption = "Source: Ministère de la Santé, DRC"
+        caption = caption_unicode
       )
   
   faceted_map <- shp_all %>%
@@ -112,7 +115,7 @@ for (rpt_date in report_dates) {
       ) +
       facet_zoom(xy = center_lon > 27.5 & center_lat > -2)
   
-  CairoPNG(sprintf("output/graphic_frame_%03d.png", i), width = 1680, height = 1000)
+  CairoPNG(sprintf("output/graphic_frame_%03d.png", i), width = 1280, height = 720)
 
   print(faceted_map / case_plot)
 
@@ -123,4 +126,4 @@ for (rpt_date in report_dates) {
 }
 
 # Make a GIF
-gifski(list.files("output", pattern = "^.*\\.png$", full.names = TRUE), gif_file = "output/viz.gif", width = 1680, height = 1000, delay = 0.1)
+gifski(list.files("output", pattern = "^.*\\.png$", full.names = TRUE), gif_file = "output/viz.gif", width = 1280, height = 720, delay = 0.1)
