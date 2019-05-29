@@ -5,6 +5,7 @@
 
 # === Lib =========================================================================== #
 library(dplyr)
+library(tidyr)
 library(lubridate)
 library(janitor)
 library(ggplot2)
@@ -13,6 +14,7 @@ library(Cairo)
 library(patchwork)
 library(ggforce)
 library(gifski)
+library(progress)
 
 # === Read in data and shapefile ==================================================
 # BUG: read_csv was being terrible at guessing types, so I reverted to base
@@ -38,11 +40,25 @@ shp <- st_read(dsn = "data/shape_file/drc_districts.geojson", layer = "drc_distr
   )
   
 # === Summarize and combine data =================================================
-case_count <- ebola_data %>%
+
+adm2_names <- shp %>%
+  as.data.frame() %>%
+  pull(adm2_vis_name)
+
+case_tmp <- ebola_data %>%
+  select(report_date, adm2_vis_name = health_zone, total_cases) %>%
+  mutate(adm2_vis_name = factor(adm2_vis_name, levels = adm2_names)) %>%
+  complete(report_date, crossing(adm2_vis_name)) %>%
+  group_by(adm2_vis_name) %>%
+  arrange(report_date) %>%
+  fill(total_cases, .direction = "down") %>%
+  ungroup()
+
+case_count <- case_tmp %>%
   group_by(report_date) %>%
-  summarize(total_cases = sum(confirmed_cases, na.rm = TRUE)) %>%
+  summarize(total_cases = sum(total_cases, na.rm = TRUE)) %>%
   ungroup() %>%
-  mutate(total_cases = total_cases - lag(total_cases, default = 0L))
+  mutate(new_cases = total_cases - lag(total_cases, default = NA))
 
 
 report_dates <- ebola_data %>%
@@ -52,22 +68,22 @@ report_dates <- ebola_data %>%
 
 shp_all <- shp %>%
   left_join(
-    ebola_data %>%
-      select(
-        report_date,
-        adm2_vis_name = health_zone,
-        total_cases
-      ),
+    case_tmp,
     by = "adm2_vis_name"
   )
 
 i <- 1
 
+pb <- progress_bar$new(
+  format = ":elapsedfull [:bar] :current/:total (:percent) :eta",
+  total = length(report_dates)
+)
+
 # === Iterate over every report date and render a separate PNG ========================= #
 # NOTE: Could be made much faster with foreach / parallelized code
 for (rpt_date in report_dates) {
   case_plot <- case_count %>%
-    ggplot(aes(report_date, total_cases)) +
+    ggplot(aes(report_date, new_cases)) +
       geom_bar(aes(fill = report_date == rpt_date), stat = "identity", show.legend = FALSE) +
       scale_fill_manual(
         values = c(`TRUE` = "Red", `FALSE` = "Grey50")
@@ -78,31 +94,20 @@ for (rpt_date in report_dates) {
         caption = "Source: Ministère de la Santé, DRC"
       )
   
-  shp_current <- shp %>%
-    left_join(
-      ebola_data %>%
-      group_by(health_zone) %>%
-      filter(
-        report_date <= rpt_date,
-      ) %>%
-      arrange(desc(report_date)) %>%
-      slice(1) %>%
-      ungroup() %>%
-      select(
-        report_date,
-        adm2_vis_name = health_zone,
-        total_cases
-      ),
-    by = "adm2_vis_name"
-    )
-
-  faceted_map <- shp_current %>%
+  faceted_map <- shp_all %>%
+    filter(report_date == rpt_date) %>%
     ggplot() +
       geom_sf(aes(fill = total_cases)) +
       scale_fill_distiller(palette = "OrRd", limits = c(0, 600)) +
       labs(
         title = "Total Ebola Cases in Democratic Republic of Congo by District",
-        subtitle = as.character(as_date(rpt_date), format = "%d %B %Y"),
+        subtitle = sprintf(
+          "%s, n = %d",
+          as.character(as_date(rpt_date), format = "%d %B %Y"),
+          case_count %>%
+            filter(report_date == rpt_date) %>%
+            pull(total_cases)
+        ),
         fill = "Total Cases"
       ) +
       facet_zoom(xy = center_lon > 27.5 & center_lat > -2)
@@ -114,6 +119,7 @@ for (rpt_date in report_dates) {
   dev.off()
 
   i <- i + 1
+  pb$tick()
 }
 
 # Make a GIF
