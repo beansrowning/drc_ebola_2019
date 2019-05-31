@@ -1,6 +1,6 @@
 # =================================================================================== #
 # Basic visualization of DRC Ebola outbreak                                           #
-# MPI-based cluster render (will not run on desktop)                                  #
+# MPI-based cluster render (also PSOCK for desktop usage)                             #
 # Sean Browning                                                                       #
 # =================================================================================== #
 
@@ -13,23 +13,24 @@ library(ggplot2)
 library(sf)
 library(Cairo)
 library(patchwork)
-library(ggforce)
+library(ggthemes)
+library(ggmap)
 library(gifski)
 library(parallel)
-library(Rmpi)
-library(doMPI)
-# library(doParallel)
+# library(Rmpi)
+# library(doMPI)
+library(doParallel)
 library(iterators)
 library(foreach)
 
 # === Make Cluster ================================================================
-# PSOCK
-# clust <- makeCluster(4, "PSOCK")
-# registerDoParallel(clust)
+# PSOCK (for home use)
+clust <- makeCluster(4, "PSOCK")
+registerDoParallel(clust)
 
-# MPI
-clust <- startMPIcluster()
-registerDoMPI(clust)
+# MPI (For high performance cluster)
+# clust <- startMPIcluster()
+# registerDoMPI(clust)
 
 # === Read in data and shapefile ==================================================
 # BUG: read_csv was being terrible at guessing types, so I reverted to base
@@ -53,7 +54,26 @@ shp <- st_read(dsn = "data/shape_file/drc_districts.geojson", layer = "drc_distr
   mutate(
     adm2_vis_name = tools::toTitleCase(tolower(adm2_name))
   )
-  
+
+# Bounding box for entire map to pull basemap
+bbox_shp <- shp %>%
+  st_bbox() %>%
+  unname()
+
+# Bounding box for the inset map
+bbox_inset <- c(xmin = 27.5, ymin = -0.9, xmax = 31, ymax = 2.6)
+
+# Testing just plotting the features in the inset plot
+sf_inset <- st_as_sfc(st_bbox(bbox_inset, crs = 4326))
+
+shp <- shp %>%
+  st_intersection(sf_inset)
+
+# Color scale for choropleth
+col_scale <- c("#00a650", "#318a4a", "#5f6f40", "#8e5236", "#be382d", "#ee1c25")
+
+# Unicode caption
+caption_unicode <- "Source: Minist\U00E8re de la Sant\U00E9, DRC"
 # === Summarize and combine data =================================================
 
 adm2_names <- shp %>%
@@ -85,7 +105,22 @@ shp_all <- shp %>%
   left_join(
     case_tmp,
     by = "adm2_vis_name"
+  ) %>%
+  mutate(
+    total_cases = case_when(
+      total_cases == 0 ~ "0",
+      total_cases > 0 & total_cases <= 10 ~ "[1,10]",
+      total_cases > 10 & total_cases <= 50 ~ "(10,50}",
+      total_cases > 50 & total_cases <= 100 ~ "(50,100]",
+      total_cases > 100 & total_cases <= 200 ~ "(100,200]",
+      total_cases > 200 ~ "200+"
+    )
   )
+
+# Pull base maps
+# Stamen maps, colored only in inset map looks better IMO
+main_base_map <- get_stamenmap(bbox_shp, zoom = 6, maptype = "toner-lite")
+inset_base_map <- get_stamenmap(bbox = bbox_inset, zoom = 9, maptype = "terrain-background")
 
 # === Create zipped iter of our data =================================================== #
 # MPI does not share memory, so each worker will only receive the chunk of data
@@ -100,18 +135,19 @@ foreach(
   data = data_iter,
   i = seq_along(report_dates),
   .packages = c(
-    "ggplot2", "sf", "Cairo", "ggforce", "dplyr", "patchwork"
+    "ggplot2", "sf", "Cairo", "ggforce", "dplyr", "patchwork", "ggmap", "ggthemes"
   ),
   .noexport = c(
-    "shp_all", "adm2_names", "ebola_data", "shp_names", "report_dates", "case_tmp"
+    "shp_all", "adm2_names", "ebola_data", "shp_names",
+    "report_dates", "case_tmp"
   ),
-  .export = "case_count",
+  .export = c(
+    "case_count", "main_base_map", "inset_base_map",
+    "col_scale", "caption_unicode", "bbox_inset"
+  ),
   .inorder = FALSE,
   .combine = function(...) {return(NULL)}
 ) %dopar% {
-  
-  caption_unicode <- "Source: Ministère de la Santé, DRC"
-  Encoding(caption_unicode) <- "UTF-8"
 
   case_plot <- case_count %>%
     ggplot(aes(report_date, new_cases)) +
@@ -121,15 +157,54 @@ foreach(
       ) +
       labs(
         x = "Date Reported",
-        y = "New Cases (n)",
-        caption = caption_unicode
+        y = "New Cases (n)"
       )
   
-  faceted_map <- data[["value"]] %>%
-    ggplot() +
-      geom_sf(aes(fill = total_cases)) +
-      scale_fill_distiller(palette = "OrRd", limits = c(0, 600)) +
+  map_main <- main_base_map %>%
+    ggmap() +
+    geom_sf(
+      data = data[["value"]],
+      aes(fill = total_cases),
+      inherit.aes = FALSE,
+      show.legend = FALSE
+      ) +
+      geom_rect(
+        aes(xmin = bbox_inset[1], xmax = bbox_inset[3], ymin = bbox_inset[2], ymax = bbox_inset[4]),
+        fill = "transparent",
+        size = 1,
+        color = "black"
+      ) +
+      theme_map() +
+      theme(
+        panel.grid.major = element_line("transparent")
+      ) +
+      scale_fill_manual(values = col_scale)
+
+  map_inset <- inset_base_map %>%
+    ggmap() +
+    geom_sf(
+      data = data[["value"]],
+      aes(fill = total_cases),
+      alpha = 0.7,
+      inherit.aes = FALSE
+    ) +
+      coord_sf(xlim = bbox_inset[c(1,3)], ylim = bbox_inset[c(2,4)], expand = FALSE) +
+      theme_map() +
+      theme(
+        panel.grid.major = element_line("transparent"),
+        legend.position = "right"
+      ) +
+      scale_fill_manual(
+        values = col_scale,
+        breaks = Filter(function(x) !is.na(x), unique(pull(data[["value"]], total_cases))),
+        na.value = col_scale[1]
+      ) +
       labs(
+        fill = "Total Cases"
+      )
+
+    plot_all <- (map_main + map_inset + plot_layout(ncol = 2, widths = c(2, 1))) / case_plot + 
+      plot_annotation(
         title = "Total Ebola Cases in Democratic Republic of Congo by District",
         subtitle = sprintf(
           "%s, n = %d",
@@ -138,22 +213,22 @@ foreach(
             filter(report_date == data[["key"]][[1]]) %>%
             pull(total_cases)
         ),
-        fill = "Total Cases"
-      ) +
-      facet_zoom(xy = center_lon > 27.5 & center_lat > -2)
+        caption = enc2utf8(caption_unicode)
+        ) +
+      plot_layout(nrow = 2, heights = c(3, 1))
   
   CairoPNG(sprintf("output/graphic_frame_%03d.png", i), width = 1280, height = 720)
 
-  print(faceted_map / case_plot)
+  print(plot_all)
 
   dev.off()
 }
 
 # === Stop Cluster =================================================================
 # MPI
-closeCluster(clust)
+# closeCluster(clust)
 # PSOCK
-# stopCluster(clust)
+stopCluster(clust)
 message(sprintf("%s - Cluster closed, starting GIF render", Sys.time()))
 
 # === Make the GIF =================================================================
@@ -168,4 +243,4 @@ gifski(
 message(sprintf("%s - GIF render complete, shutting down", Sys.time()))
 
 # === Terminate MPI =======================================================================
-mpi.quit()
+# mpi.quit()

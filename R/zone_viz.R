@@ -11,10 +11,11 @@ library(janitor)
 library(ggplot2)
 library(sf)
 library(Cairo)
-library(patchwork)
-library(ggforce)
 library(gifski)
 library(progress)
+library(ggthemes)
+library(ggmap)
+library(patchwork)
 
 # === Read in data and shapefile ==================================================
 # BUG: read_csv was being terrible at guessing types, so I reverted to base
@@ -39,6 +40,27 @@ shp <- st_read(dsn = "data/shape_file/drc_districts.geojson", layer = "drc_distr
     adm2_vis_name = tools::toTitleCase(tolower(adm2_name))
   )
   
+# Bounding box for entire map
+# To pull basemap
+bbox_shp <- shp %>%
+  st_bbox() %>%
+  unname()
+
+# Bounding box for the inset map
+bbox_inset <- c(xmin = 27.5, ymin = -0.9, xmax = 31, ymax = 2.6)
+
+# Testing just plotting the features in the inset plot
+sf_inset <- st_as_sfc(st_bbox(bbox_inset, crs = 4326))
+shp <- shp %>%
+  st_intersection(sf_inset)
+
+# Color scale for choropleth
+col_scale <- c("#00a650", "#318a4a", "#5f6f40", "#8e5236", "#be382d", "#ee1c25")
+
+
+# Unicode caption
+caption_unicode <- "Source: Minist\U00E8re de la Sant\U00E9, DRC"
+
 # === Summarize and combine data =================================================
 
 adm2_names <- shp %>%
@@ -70,7 +92,21 @@ shp_all <- shp %>%
   left_join(
     case_tmp,
     by = "adm2_vis_name"
+  ) %>%
+  mutate(
+    total_cases = case_when(
+      total_cases == 0 ~ "0",
+      total_cases > 0 & total_cases <= 10 ~ "[1,10]",
+      total_cases > 10 & total_cases <= 50 ~ "(10,50}",
+      total_cases > 50 & total_cases <= 100 ~ "(50,100]",
+      total_cases > 100 & total_cases <= 200 ~ "(100,200]",
+      total_cases > 200 ~ "200+"
+    )
   )
+
+# Pull base maps
+main_base_map <- get_stamenmap(bbox_shp, zoom = 6, maptype = "toner-lite")
+inset_base_map <- get_stamenmap(bbox = c(27.5, -0.9, 31, 2.6), zoom = 9, maptype = "terrain-background")
 
 i <- 1
 
@@ -79,8 +115,7 @@ pb <- progress_bar$new(
   total = length(report_dates)
 )
 
-caption_unicode <- "Source: Ministère de la Santé, DRC"
-Encoding(caption_unicode) <- "UTF-8"
+caption_unicode <- "Source: Minist\U00E8re de la Sant\U00E9, DRC"
 
 # === Iterate over every report date and render a separate PNG ========================= #
 # NOTE: Could be made much faster with foreach / parallelized code
@@ -93,31 +128,69 @@ for (rpt_date in report_dates) {
       ) +
       labs(
         x = "Date Reported",
-        y = "New Cases (n)",
-        caption = caption_unicode
+        y = "New Cases (n)"
       )
-  
-  faceted_map <- shp_all %>%
-    filter(report_date == rpt_date) %>%
-    ggplot() +
-      geom_sf(aes(fill = total_cases)) +
-      scale_fill_distiller(palette = "OrRd", limits = c(0, 600)) +
+
+  map_main <- main_base_map %>%
+    ggmap() +
+    geom_sf(
+      data = shp_all %>% filter(report_date == rpt_date),
+      aes(fill = total_cases),
+      inherit.aes = FALSE,
+      show.legend = FALSE
+      ) +
+      geom_rect(
+        aes(xmin = 27.5, xmax = 31, ymin = -0.9, ymax = 2.6),
+        fill = "transparent",
+        size = 1,
+        color = "black"
+      ) +
+      theme_map() +
+      theme(
+        panel.grid.major = element_line("transparent")
+      ) +
+      scale_fill_manual(values = col_scale)
+
+  map_inset <- inset_base_map %>%
+    ggmap() +
+    geom_sf(
+      data = shp_all %>% filter(report_date == rpt_date),
+      aes(fill = total_cases),
+      alpha = 0.7,
+      inherit.aes = FALSE
+    ) +
+      coord_sf(xlim = c(27.5, 31), ylim = c(-0.9, 2.6), expand = FALSE) +
+      theme_map() +
+      theme(
+        panel.grid.major = element_line("transparent"),
+        legend.position = "right"
+      ) +
+      scale_fill_manual(
+        values = col_scale,
+        breaks = Filter(function(x) !is.na(x), unique(pull(shp_all, total_cases))),
+        na.value = col_scale[1]
+      ) +
       labs(
+        fill = "Total Cases"
+      )
+
+    plot_all <- (map_main + map_inset + plot_layout(ncol = 2, widths = c(2, 1))) / case_plot + 
+      plot_annotation(
         title = "Total Ebola Cases in Democratic Republic of Congo by District",
         subtitle = sprintf(
-          "%s, n = %d",
-          as.character(as_date(rpt_date), format = "%d %B %Y"),
-          case_count %>%
-            filter(report_date == rpt_date) %>%
-            pull(total_cases)
-        ),
-        fill = "Total Cases"
-      ) +
-      facet_zoom(xy = center_lon > 27.5 & center_lat > -2)
-  
+            "%s, n = %d",
+            as.character(as_date(rpt_date), format = "%d %B %Y"),
+            case_count %>%
+              filter(report_date == rpt_date) %>%
+              pull(total_cases)
+          ),
+        caption = enc2utf8(caption_unicode)
+        ) +
+      plot_layout(nrow = 2, heights = c(3, 1))
+
   CairoPNG(sprintf("output/graphic_frame_%03d.png", i), width = 1280, height = 720)
 
-  print(faceted_map / case_plot)
+  print(plot_all)
 
   dev.off()
 
