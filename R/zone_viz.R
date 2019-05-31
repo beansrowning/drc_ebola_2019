@@ -101,12 +101,13 @@ shp_all <- shp %>%
       total_cases > 50 & total_cases <= 100 ~ "(50,100]",
       total_cases > 100 & total_cases <= 200 ~ "(100,200]",
       total_cases > 200 ~ "200+"
-    )
+    ),
+    total_cases = factor(total_cases, levels = c("0", "[1,10]", "(10,50}", "(50,100]", "(100,200]", "200+"), ordered = TRUE)
   )
 
 # Pull base maps
 main_base_map <- get_stamenmap(bbox_shp, zoom = 6, maptype = "toner-lite")
-inset_base_map <- get_stamenmap(bbox = c(27.5, -0.9, 31, 2.6), zoom = 9, maptype = "terrain-background")
+inset_base_map <- get_stamenmap(bbox = unname(bbox_inset), zoom = 9, maptype = "terrain-background")
 
 i <- 1
 
@@ -149,7 +150,7 @@ for (rpt_date in report_dates) {
       theme(
         panel.grid.major = element_line("transparent")
       ) +
-      scale_fill_manual(values = col_scale)
+      scale_fill_manual(values = col_scale, na.value = col_scale[1])
 
   map_inset <- inset_base_map %>%
     ggmap() +
@@ -167,8 +168,9 @@ for (rpt_date in report_dates) {
       ) +
       scale_fill_manual(
         values = col_scale,
-        breaks = Filter(function(x) !is.na(x), unique(pull(shp_all, total_cases))),
-        na.value = col_scale[1]
+        breaks = levels(pull(shp_all, total_cases)),
+        na.value = col_scale[1],
+        drop = FALSE
       ) +
       labs(
         fill = "Total Cases"

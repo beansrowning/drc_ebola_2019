@@ -25,7 +25,7 @@ library(foreach)
 
 # === Make Cluster ================================================================
 # PSOCK (for home use)
-clust <- makeCluster(4, "PSOCK")
+clust <- makeCluster(detectCores(), "PSOCK")
 registerDoParallel(clust)
 
 # MPI (For high performance cluster)
@@ -114,13 +114,14 @@ shp_all <- shp %>%
       total_cases > 50 & total_cases <= 100 ~ "(50,100]",
       total_cases > 100 & total_cases <= 200 ~ "(100,200]",
       total_cases > 200 ~ "200+"
-    )
+    ),
+    total_cases = factor(total_cases, levels = c("0", "[1,10]", "(10,50}", "(50,100]", "(100,200]", "200+"), ordered = TRUE)
   )
 
 # Pull base maps
 # Stamen maps, colored only in inset map looks better IMO
 main_base_map <- get_stamenmap(bbox_shp, zoom = 6, maptype = "toner-lite")
-inset_base_map <- get_stamenmap(bbox = bbox_inset, zoom = 9, maptype = "terrain-background")
+inset_base_map <- get_stamenmap(bbox = unname(bbox_inset), zoom = 9, maptype = "terrain-background")
 
 # === Create zipped iter of our data =================================================== #
 # MPI does not share memory, so each worker will only receive the chunk of data
@@ -178,7 +179,7 @@ foreach(
       theme(
         panel.grid.major = element_line("transparent")
       ) +
-      scale_fill_manual(values = col_scale)
+      scale_fill_manual(values = col_scale, na.value = col_scale[1])
 
   map_inset <- inset_base_map %>%
     ggmap() +
@@ -196,8 +197,9 @@ foreach(
       ) +
       scale_fill_manual(
         values = col_scale,
-        breaks = Filter(function(x) !is.na(x), unique(pull(data[["value"]], total_cases))),
-        na.value = col_scale[1]
+        breaks = levels(pull(data[["value"]], total_cases)),
+        na.value = col_scale[1],
+        drop = FALSE
       ) +
       labs(
         fill = "Total Cases"
