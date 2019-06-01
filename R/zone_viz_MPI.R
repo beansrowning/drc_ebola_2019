@@ -74,6 +74,13 @@ col_scale <- c("#00a650", "#318a4a", "#5f6f40", "#8e5236", "#be382d", "#ee1c25")
 
 # Unicode caption
 caption_unicode <- "Source: Minist\U00E8re de la Sant\U00E9, DRC"
+
+# Extra tailing frames for the latest date
+n_extra <- 20
+
+# Time delay per frame
+n_delay <- 0.1
+
 # === Summarize and combine data =================================================
 
 adm2_names <- shp %>%
@@ -126,7 +133,13 @@ inset_base_map <- get_stamenmap(bbox = unname(bbox_inset), zoom = 9, maptype = "
 # === Create zipped iter of our data =================================================== #
 # MPI does not share memory, so each worker will only receive the chunk of data
 # it needs to create its frame
-data_iter <- isplit(shp_all, shp_all$report_date)
+data_split <- split(shp_all, shp_all$report_date)
+data_split <- c(data_split, rep(data_split[length(data_split)], n_extra))
+
+report_dates <- c(report_dates, rep(report_dates[length(report_dates)], n_extra))
+
+data_iter <- iter(data_split)
+date_iter <- iter(report_dates)
 
 message(sprintf("%s - Starting PNG render via MPI", Sys.time()))
 
@@ -134,6 +147,7 @@ message(sprintf("%s - Starting PNG render via MPI", Sys.time()))
 # NOTE: Could be made much faster with foreach / parallelized code
 foreach(
   data = data_iter,
+  rpt_date = date_iter,
   i = seq_along(report_dates),
   .packages = c(
     "ggplot2", "sf", "Cairo", "ggforce", "dplyr", "patchwork", "ggmap", "ggthemes"
@@ -152,9 +166,13 @@ foreach(
 
   case_plot <- case_count %>%
     ggplot(aes(report_date, new_cases)) +
-      geom_bar(aes(fill = report_date == data[["key"]][[1]]), stat = "identity", show.legend = FALSE) +
+      geom_bar(aes(fill = report_date == rpt_date), stat = "identity", show.legend = FALSE) +
       scale_fill_manual(
         values = c(`TRUE` = "Red", `FALSE` = "Grey50")
+      ) +
+      scale_x_date(
+        date_breaks = "1 month",
+        date_labels = "%b"
       ) +
       labs(
         x = "Date Reported",
@@ -164,7 +182,7 @@ foreach(
   map_main <- main_base_map %>%
     ggmap() +
     geom_sf(
-      data = data[["value"]],
+      data = data,
       aes(fill = total_cases),
       inherit.aes = FALSE,
       show.legend = FALSE
@@ -184,7 +202,7 @@ foreach(
   map_inset <- inset_base_map %>%
     ggmap() +
     geom_sf(
-      data = data[["value"]],
+      data = data,
       aes(fill = total_cases),
       alpha = 0.7,
       inherit.aes = FALSE
@@ -197,7 +215,7 @@ foreach(
       ) +
       scale_fill_manual(
         values = col_scale,
-        breaks = levels(pull(data[["value"]], total_cases)),
+        breaks = levels(pull(data, total_cases)),
         na.value = col_scale[1],
         drop = FALSE
       ) +
@@ -209,11 +227,12 @@ foreach(
       plot_annotation(
         title = "Total Ebola Cases in Democratic Republic of Congo by District",
         subtitle = sprintf(
-          "%s, n = %d",
-          as.character(data[["key"]][[1]], format = "%d %B %Y"),
+          "%s, n = %s  (confirmed + probable)",
+          as.character(rpt_date, format = "%d %B %Y"),
           case_count %>%
-            filter(report_date == data[["key"]][[1]]) %>%
-            pull(total_cases)
+            filter(report_date == rpt_date) %>%
+            pull(total_cases) %>%
+            format(big.mark = ",")
         ),
         caption = enc2utf8(caption_unicode)
         ) +
@@ -239,7 +258,7 @@ gifski(
   gif_file = "output/viz.gif",
   width = 1280,
   height = 720,
-  delay = 0.1
+  delay = n_delay
 )
 
 message(sprintf("%s - GIF render complete, shutting down", Sys.time()))

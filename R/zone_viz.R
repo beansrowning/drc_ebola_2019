@@ -61,6 +61,12 @@ col_scale <- c("#00a650", "#318a4a", "#5f6f40", "#8e5236", "#be382d", "#ee1c25")
 # Unicode caption
 caption_unicode <- "Source: Minist\U00E8re de la Sant\U00E9, DRC"
 
+# Extra tailing frames for the latest date
+n_extra <- 20
+
+# Time delay per frame
+n_delay <- 0.1
+
 # === Summarize and combine data =================================================
 
 adm2_names <- shp %>%
@@ -118,6 +124,8 @@ pb <- progress_bar$new(
 
 caption_unicode <- "Source: Minist\U00E8re de la Sant\U00E9, DRC"
 
+report_dates <- c(report_dates, rep(report_dates[length(report_dates)], n_extra))
+
 # === Iterate over every report date and render a separate PNG ========================= #
 # NOTE: Could be made much faster with foreach / parallelized code
 for (rpt_date in report_dates) {
@@ -126,6 +134,10 @@ for (rpt_date in report_dates) {
       geom_bar(aes(fill = report_date == rpt_date), stat = "identity", show.legend = FALSE) +
       scale_fill_manual(
         values = c(`TRUE` = "Red", `FALSE` = "Grey50")
+      ) +
+      scale_x_date(
+        date_breaks = "1 month",
+        date_labels = "%b"
       ) +
       labs(
         x = "Date Reported",
@@ -180,11 +192,12 @@ for (rpt_date in report_dates) {
       plot_annotation(
         title = "Total Ebola Cases in Democratic Republic of Congo by District",
         subtitle = sprintf(
-            "%s, n = %d",
+            "%s, n = %s (confirmed + probable)",
             as.character(as_date(rpt_date), format = "%d %B %Y"),
             case_count %>%
               filter(report_date == rpt_date) %>%
-              pull(total_cases)
+              pull(total_cases) %>%
+              format(big.mark = ",")
           ),
         caption = enc2utf8(caption_unicode)
         ) +
@@ -201,4 +214,10 @@ for (rpt_date in report_dates) {
 }
 
 # Make a GIF
-gifski(list.files("output", pattern = "^.*\\.png$", full.names = TRUE), gif_file = "output/viz.gif", width = 1280, height = 720, delay = 0.1)
+gifski(
+  list.files("output", pattern = "^.*\\.png$", full.names = TRUE),
+  gif_file = "output/viz.gif",
+  width = 1280,
+  height = 720,
+  delay = n_delay
+)
