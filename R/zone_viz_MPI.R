@@ -117,12 +117,12 @@ shp_all <- shp %>%
     total_cases = case_when(
       total_cases == 0 ~ "0",
       total_cases > 0 & total_cases <= 10 ~ "[1,10]",
-      total_cases > 10 & total_cases <= 50 ~ "(10,50}",
+      total_cases > 10 & total_cases <= 50 ~ "(10,50]",
       total_cases > 50 & total_cases <= 100 ~ "(50,100]",
       total_cases > 100 & total_cases <= 200 ~ "(100,200]",
       total_cases > 200 ~ "200+"
     ),
-    total_cases = factor(total_cases, levels = c("0", "[1,10]", "(10,50}", "(50,100]", "(100,200]", "200+"), ordered = TRUE)
+    total_cases = factor(total_cases, levels = c("0", "[1,10]", "(10,50]", "(50,100]", "(100,200]", "200+"), ordered = TRUE)
   )
 
 # Pull base maps
