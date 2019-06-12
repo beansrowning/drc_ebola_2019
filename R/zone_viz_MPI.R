@@ -150,7 +150,7 @@ foreach(
   rpt_date = date_iter,
   i = seq_along(report_dates),
   .packages = c(
-    "ggplot2", "sf", "Cairo", "ggforce", "dplyr", "patchwork", "ggmap", "ggthemes"
+    "ggplot2", "sf", "Cairo", "dplyr", "patchwork", "ggmap", "ggthemes"
   ),
   .noexport = c(
     "shp_all", "adm2_names", "ebola_data", "shp_names",
