@@ -1,4 +1,467 @@
 publication_date,report_date,country,province,health_zone,confirmed_cases,probable_cases,total_cases,confirmed_deaths,total_deaths,total_suspected_cases,new_deaths,new_cured,total_cured,new_suspected_cases,old_suspected_cases,confirmed_cases_change,probable_cases_change,total_cases_change,confirmed_deaths_change,total_deaths_change,total_suspected_cases_change,source
+2019-07-07,2019-07-06,COD,North Kivu,Alimbongo,3,0,3,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Beni,415,9,424,261,270,62,NA,NA,NA,NA,NA,6,0,6,2,2,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Biena,15,1,16,12,13,11,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Butembo,254,0,254,289,289,19,NA,NA,NA,NA,NA,0,0,0,2,2,-16,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Goma,0,0,0,0,0,24,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Kalunguta,125,15,140,53,68,15,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Katwa,607,16,623,420,436,27,NA,NA,NA,NA,NA,0,0,0,2,2,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Kayina,8,0,8,5,5,5,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Kyondo,22,2,24,13,15,16,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Lubero,28,2,30,4,6,19,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Mabalako,338,16,354,237,253,14,NA,NA,NA,NA,NA,3,0,3,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Mangurujipa,18,0,18,10,10,8,NA,NA,NA,NA,NA,1,0,1,1,1,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Masereka,47,6,53,15,21,3,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Musienene,71,1,72,29,30,28,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Mutwanga,10,0,10,6,6,16,NA,NA,NA,NA,NA,0,0,0,0,0,-18,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Oicha,42,0,42,21,21,10,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,North Kivu,Vuhovi,89,13,102,32,45,5,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Ariwara,1,0,1,1,1,1,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Bunia,4,0,4,4,4,16,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Komanda,31,9,40,13,22,8,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Mandima,175,4,179,99,103,11,NA,NA,NA,NA,NA,0,0,0,0,0,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Rwampara,8,0,8,3,3,5,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-07,2019-07-06,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_07juil19
+2019-07-06,2019-07-05,COD,North Kivu,Alimbongo,3,0,3,1,1,2,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Beni,409,9,418,259,268,64,NA,NA,NA,NA,NA,3,0,3,3,3,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Biena,15,1,16,12,13,16,NA,NA,NA,NA,NA,0,0,0,0,0,-9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Butembo,254,0,254,287,287,35,NA,NA,NA,NA,NA,1,0,1,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Goma,0,0,0,0,0,29,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Kalunguta,125,15,140,53,68,18,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Katwa,607,16,623,418,434,28,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Kayina,8,0,8,5,5,7,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Kyondo,22,2,24,13,15,16,NA,NA,NA,NA,NA,0,0,0,0,0,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Lubero,28,2,30,4,6,17,NA,NA,NA,NA,NA,1,0,1,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Mabalako,335,16,351,237,253,19,NA,NA,NA,NA,NA,3,0,3,2,2,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Mangurujipa,17,0,17,9,9,10,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Masereka,47,6,53,15,21,2,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Musienene,71,1,72,29,30,30,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Mutwanga,10,0,10,6,6,34,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Oicha,42,0,42,21,21,14,NA,NA,NA,NA,NA,0,0,0,0,0,12,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,North Kivu,Vuhovi,89,13,102,32,45,3,NA,NA,NA,NA,NA,1,0,1,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Ariwara,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Bunia,4,0,4,4,4,14,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Komanda,31,9,40,13,22,8,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Mandima,175,4,179,99,103,19,NA,NA,NA,NA,NA,0,0,0,0,0,7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Rwampara,8,0,8,3,3,3,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-06,2019-07-05,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_06juil19
+2019-07-05,2019-07-04,COD,North Kivu,Alimbongo,3,0,3,1,1,2,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Beni,406,9,415,256,265,67,NA,NA,NA,NA,NA,3,0,3,3,3,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Biena,15,1,16,12,13,25,NA,NA,NA,NA,NA,0,0,0,0,0,-10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Butembo,253,0,253,287,287,36,NA,NA,NA,NA,NA,1,0,1,2,2,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Goma,0,0,0,0,0,29,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Kalunguta,125,15,140,53,68,17,NA,NA,NA,NA,NA,0,0,0,0,0,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Katwa,607,16,623,418,434,28,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Kayina,8,0,8,5,5,5,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Kyondo,22,2,24,13,15,24,NA,NA,NA,NA,NA,0,0,0,0,0,8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Lubero,27,2,29,4,6,17,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Mabalako,332,16,348,235,251,22,NA,NA,NA,NA,NA,1,0,1,2,2,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Mangurujipa,17,0,17,9,9,7,NA,NA,NA,NA,NA,0,0,0,0,0,-11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Masereka,47,6,53,15,21,7,NA,NA,NA,NA,NA,1,0,1,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Musienene,71,1,72,29,30,28,NA,NA,NA,NA,NA,0,0,0,0,0,-32,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Mutwanga,10,0,10,6,6,36,NA,NA,NA,NA,NA,0,0,0,0,0,17,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Oicha,42,0,42,21,21,2,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,North Kivu,Vuhovi,88,13,101,32,45,3,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Ariwara,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Bunia,4,0,4,4,4,14,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Komanda,31,9,40,13,22,8,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Mambasa,0,0,0,0,0,2,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Mandima,175,4,179,99,103,12,NA,NA,NA,NA,NA,1,0,1,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Rwampara,8,0,8,3,3,5,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-05,2019-07-04,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_05juil19
+2019-07-04,2019-07-03,COD,North Kivu,Alimbongo,3,0,3,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Beni,403,9,412,253,262,71,NA,NA,NA,NA,NA,4,0,4,3,3,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Biena,15,1,16,12,13,35,NA,NA,NA,NA,NA,1,0,1,0,0,15,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Butembo,252,0,252,285,285,26,NA,NA,NA,NA,NA,2,0,2,1,1,-11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Goma,0,0,0,0,0,31,NA,NA,NA,NA,NA,0,0,0,0,0,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Kalunguta,125,15,140,53,68,25,NA,NA,NA,NA,NA,2,0,2,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Katwa,607,16,623,418,434,30,NA,NA,NA,NA,NA,2,0,2,1,1,-11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Kayina,8,0,8,5,5,3,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Kyondo,22,2,24,13,15,16,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Lubero,27,2,29,4,6,19,NA,NA,NA,NA,NA,0,0,0,0,0,-12,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Mabalako,331,16,347,233,249,12,NA,NA,NA,NA,NA,1,0,1,2,2,-7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Mangurujipa,17,0,17,9,9,18,NA,NA,NA,NA,NA,0,0,0,0,0,9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Masereka,46,6,52,15,21,2,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Musienene,71,1,72,29,30,60,NA,NA,NA,NA,NA,0,0,0,0,0,16,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Mutwanga,10,0,10,6,6,19,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Oicha,42,0,42,21,21,8,NA,NA,NA,NA,NA,0,0,0,0,0,-11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,North Kivu,Vuhovi,88,13,101,32,45,8,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Ariwara,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Bunia,4,0,4,4,4,15,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Komanda,31,9,40,13,22,9,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Mandima,174,4,178,99,103,9,NA,NA,NA,NA,NA,1,0,1,1,1,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Rwampara,8,0,8,3,3,4,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-04,2019-07-03,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_04juil19
+2019-07-03,2019-07-02,COD,North Kivu,Alimbongo,3,0,3,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Beni,399,9,408,250,259,66,NA,NA,NA,NA,NA,4,0,4,7,7,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Biena,14,1,15,12,13,20,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Butembo,250,0,250,284,284,37,NA,NA,NA,NA,NA,2,0,2,2,2,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Goma,0,0,0,0,0,21,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Kalunguta,123,15,138,53,68,21,NA,NA,NA,NA,NA,1,0,1,0,0,7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Katwa,605,16,621,417,433,41,NA,NA,NA,NA,NA,1,0,1,2,2,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Kayina,8,0,8,5,5,5,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Kyondo,22,2,24,13,15,16,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Lubero,27,2,29,4,6,31,NA,NA,NA,NA,NA,0,0,0,0,0,18,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Mabalako,330,16,346,231,247,19,NA,NA,NA,NA,NA,5,0,5,0,0,-9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Mangurujipa,17,0,17,9,9,9,NA,NA,NA,NA,NA,0,0,0,0,0,-7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Masereka,46,6,52,15,21,3,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Musienene,71,1,72,29,30,44,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Mutwanga,10,0,10,6,6,20,NA,NA,NA,NA,NA,1,0,1,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Oicha,42,0,42,21,21,19,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,North Kivu,Vuhovi,88,13,101,32,45,6,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Ariwara,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Bunia,4,0,4,4,4,12,NA,NA,NA,NA,NA,0,0,0,0,0,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Komanda,31,9,40,13,22,12,NA,NA,NA,NA,NA,0,0,0,0,0,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Mambasa,0,0,0,0,0,3,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Mandima,173,4,177,98,102,9,NA,NA,NA,NA,NA,1,0,1,1,1,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Rwampara,8,0,8,3,3,0,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-03,2019-07-02,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_03juil19
+2019-07-02,2019-07-01,COD,North Kivu,Alimbongo,3,0,3,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Beni,395,9,404,243,252,68,NA,NA,NA,NA,NA,11,0,11,6,6,14,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Biena,14,1,15,12,13,21,NA,NA,NA,NA,NA,0,0,0,0,0,-7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Butembo,248,0,248,282,282,39,NA,NA,NA,NA,NA,0,0,0,2,2,18,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Goma,0,0,0,0,0,20,NA,NA,NA,NA,NA,0,0,0,0,0,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Kalunguta,122,15,137,53,68,14,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Katwa,604,16,620,415,431,49,NA,NA,NA,NA,NA,0,0,0,1,1,12,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Kayina,8,0,8,5,5,6,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Kyondo,22,2,24,13,15,12,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Lubero,27,2,29,4,6,13,NA,NA,NA,NA,NA,1,0,1,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Mabalako,325,16,341,231,247,28,NA,NA,NA,NA,NA,0,0,0,2,2,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Mangurujipa,17,0,17,9,9,16,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Masereka,46,6,52,15,21,3,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Musienene,71,1,72,29,30,39,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Mutwanga,9,0,9,6,6,20,NA,NA,NA,NA,NA,1,0,1,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Oicha,42,0,42,21,21,15,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,North Kivu,Vuhovi,88,13,101,32,45,8,NA,NA,NA,NA,NA,1,0,1,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Ariwara,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,1,1,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Bunia,4,0,4,4,4,6,NA,NA,NA,NA,NA,0,0,0,1,1,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Komanda,31,9,40,13,22,6,NA,NA,NA,NA,NA,1,0,1,1,1,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Mambasa,0,0,0,0,0,2,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Mandima,172,4,176,97,101,11,NA,NA,NA,NA,NA,1,0,1,1,1,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Rwampara,8,0,8,3,3,6,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-02,2019-07-01,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_02juil19
+2019-07-01,2019-06-30,COD,North Kivu,Alimbongo,3,0,3,1,1,1,NA,NA,NA,NA,NA,1,0,1,1,1,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Beni,384,9,393,237,246,54,NA,NA,NA,NA,NA,2,0,2,1,1,13,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Biena,14,1,15,12,13,28,NA,NA,NA,NA,NA,1,0,1,0,0,9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Butembo,248,0,248,280,280,21,NA,NA,NA,NA,NA,0,0,0,4,4,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Goma,0,0,0,0,0,14,NA,NA,NA,NA,NA,0,0,0,0,0,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Kalunguta,122,15,137,53,68,15,NA,NA,NA,NA,NA,1,0,1,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Katwa,604,16,620,414,430,37,NA,NA,NA,NA,NA,1,0,1,1,1,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Kayina,8,0,8,5,5,3,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Kyondo,22,2,24,13,15,8,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Lubero,26,2,28,4,6,18,NA,NA,NA,NA,NA,2,0,2,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Mabalako,325,16,341,229,245,28,NA,NA,NA,NA,NA,3,0,3,0,0,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Mangurujipa,17,0,17,9,9,14,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Masereka,46,6,52,15,21,8,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Musienene,71,1,72,29,30,41,NA,NA,NA,NA,NA,0,0,0,0,0,17,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Mutwanga,8,0,8,6,6,19,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Oicha,42,0,42,21,21,15,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,North Kivu,Vuhovi,87,13,100,32,45,3,NA,NA,NA,NA,NA,1,0,1,1,1,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Ariwara,1,0,1,0,0,0,NA,NA,NA,NA,NA,1,0,1,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Bunia,4,0,4,3,3,14,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Komanda,30,9,39,12,21,7,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Mambasa,0,0,0,0,0,3,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Mandima,171,4,175,96,100,6,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Rwampara,8,0,8,3,3,3,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-07-01,2019-06-30,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_01juil19
+2019-06-30,2019-06-29,COD,North Kivu,Alimbongo,2,0,2,0,0,2,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Beni,382,9,391,236,245,41,NA,NA,NA,NA,NA,6,0,6,1,1,-13,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Biena,13,1,14,12,13,19,NA,NA,NA,NA,NA,0,0,0,0,0,-9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Butembo,248,0,248,276,276,25,NA,NA,NA,NA,NA,1,0,1,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Goma,0,0,0,0,0,4,NA,NA,NA,NA,NA,0,0,0,0,0,-10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Kalunguta,121,15,136,53,68,17,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Katwa,603,16,619,413,429,31,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Kayina,8,0,8,5,5,6,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Kyondo,22,2,24,13,15,12,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Lubero,24,2,26,4,6,23,NA,NA,NA,NA,NA,1,0,1,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Mabalako,322,16,338,229,245,22,NA,NA,NA,NA,NA,4,0,4,3,3,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Mangurujipa,17,0,17,9,9,16,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Masereka,46,6,52,15,21,4,NA,NA,NA,NA,NA,1,0,1,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Musienene,71,1,72,29,30,24,NA,NA,NA,NA,NA,0,0,0,0,0,-17,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Mutwanga,8,0,8,6,6,17,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Oicha,42,0,42,21,21,10,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,North Kivu,Vuhovi,86,13,99,31,44,5,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,Ituri,Bunia,4,0,4,3,3,11,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,Ituri,Komanda,30,9,39,12,21,5,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,Ituri,Mambasa,0,0,0,0,0,1,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,Ituri,Mandima,171,4,175,96,100,8,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,Ituri,Rwampara,8,0,8,3,3,6,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-30,2019-06-29,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_30juin19
+2019-06-29,2019-06-28,COD,North Kivu,Alimbongo,2,0,2,0,0,1,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Beni,376,9,385,235,244,54,NA,NA,NA,NA,NA,6,0,6,1,1,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Biena,13,1,14,12,13,28,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Butembo,247,0,247,276,276,21,NA,NA,NA,NA,NA,1,0,1,0,0,-10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Goma,0,0,0,0,0,14,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Kalunguta,121,15,136,53,68,15,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Katwa,603,16,619,413,429,37,NA,NA,NA,NA,NA,0,0,0,0,0,7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Kayina,8,0,8,5,5,3,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Kyondo,22,2,24,13,15,8,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Lubero,23,2,25,4,6,18,NA,NA,NA,NA,NA,1,0,1,1,1,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Mabalako,318,16,334,226,242,28,NA,NA,NA,NA,NA,4,0,4,4,4,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Mangurujipa,17,0,17,9,9,14,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Masereka,45,6,51,15,21,8,NA,NA,NA,NA,NA,3,0,3,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Musienene,71,1,72,29,30,41,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Mutwanga,8,0,8,6,6,19,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Oicha,42,0,42,21,21,15,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,North Kivu,Vuhovi,86,13,99,31,44,3,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,Ituri,Bunia,4,0,4,3,3,14,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,Ituri,Komanda,30,9,39,12,21,7,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,Ituri,Mambasa,0,0,0,0,0,3,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,Ituri,Mandima,171,4,175,96,100,6,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,Ituri,Rwampara,8,0,8,3,3,3,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-29,2019-06-28,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_29juin19
+2019-06-28,2019-06-27,COD,North Kivu,Alimbongo,2,0,2,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Beni,370,9,379,234,243,55,NA,NA,NA,NA,NA,7,0,7,6,6,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Biena,13,1,14,12,13,33,NA,NA,NA,NA,NA,1,0,1,1,1,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Butembo,246,0,246,276,276,31,NA,NA,NA,NA,NA,0,0,0,2,2,9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Goma,0,0,0,0,0,18,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Kalunguta,121,15,136,53,68,21,NA,NA,NA,NA,NA,1,0,1,0,0,9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Katwa,603,16,619,413,429,30,NA,NA,NA,NA,NA,0,0,0,2,2,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Kayina,8,0,8,5,5,6,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Kyondo,22,2,24,13,15,11,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Lubero,22,2,24,3,5,13,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Mabalako,314,16,330,222,238,22,NA,NA,NA,NA,NA,1,0,1,2,2,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Mangurujipa,17,0,17,9,9,14,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Masereka,42,6,48,15,21,3,NA,NA,NA,NA,NA,3,0,3,0,0,-7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Musienene,71,1,72,29,30,41,NA,NA,NA,NA,NA,0,0,0,0,0,17,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Mutwanga,8,0,8,6,6,15,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Oicha,42,0,42,21,21,17,NA,NA,NA,NA,NA,0,0,0,0,0,7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,North Kivu,Vuhovi,86,13,99,31,44,4,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,Ituri,Bunia,4,0,4,3,3,9,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,Ituri,Komanda,30,9,39,12,21,12,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,Ituri,Mambasa,0,0,0,0,0,1,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,Ituri,Mandima,171,4,175,96,100,8,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,Ituri,Rwampara,8,0,8,3,3,0,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-28,2019-06-27,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_28juin19
+2019-06-27,2019-06-26,COD,North Kivu,Alimbongo,2,0,2,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Beni,363,9,372,228,237,50,NA,NA,NA,NA,NA,5,0,5,3,3,31,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Biena,12,1,13,11,12,35,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Butembo,246,0,246,274,274,22,NA,NA,NA,NA,NA,0,0,0,2,2,-7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Goma,0,0,0,0,0,24,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Kalunguta,120,15,135,53,68,12,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Katwa,603,16,619,411,427,25,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Kayina,8,0,8,5,5,7,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Kyondo,22,2,24,13,15,10,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Lubero,22,2,24,3,5,14,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Mabalako,313,16,329,220,236,18,NA,NA,NA,NA,NA,1,0,1,4,4,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Mangurujipa,17,0,17,9,9,17,NA,NA,NA,NA,NA,0,0,0,0,0,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Masereka,39,6,45,15,21,10,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Musienene,71,1,72,29,30,24,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Mutwanga,8,0,8,6,6,17,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Oicha,42,0,42,21,21,10,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,North Kivu,Vuhovi,86,13,99,31,44,6,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,Ituri,Bunia,4,0,4,3,3,8,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,Ituri,Komanda,30,9,39,12,21,7,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,Ituri,Mandima,171,4,175,96,100,8,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,Ituri,Rwampara,8,0,8,3,3,4,NA,NA,NA,NA,NA,1,0,1,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-27,2019-06-26,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_27juin19
+2019-06-26,2019-06-25,COD,North Kivu,Alimbongo,2,0,2,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Beni,358,9,367,225,234,19,NA,NA,NA,NA,NA,2,0,2,7,7,19,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Biena,12,1,13,11,12,36,NA,NA,NA,NA,NA,0,0,0,-2,-2,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Butembo,246,0,246,272,272,29,NA,NA,NA,NA,NA,1,0,1,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Goma,0,0,0,0,0,22,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Kalunguta,120,15,135,53,68,17,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Katwa,603,16,619,411,427,27,NA,NA,NA,NA,NA,0,0,0,2,2,-16,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Kayina,8,0,8,5,5,5,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Kyondo,22,2,24,13,15,13,NA,NA,NA,NA,NA,1,0,1,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Lubero,22,2,24,3,5,19,NA,NA,NA,NA,NA,1,0,1,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Mabalako,312,16,328,216,232,26,NA,NA,NA,NA,NA,4,0,4,1,1,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Mangurujipa,17,0,17,9,9,7,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Masereka,39,6,45,15,21,7,NA,NA,NA,NA,NA,1,0,1,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Musienene,71,1,72,29,30,30,NA,NA,NA,NA,NA,1,0,1,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Mutwanga,8,0,8,6,6,20,NA,NA,NA,NA,NA,0,0,0,0,0,20,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Oicha,42,0,42,21,21,16,NA,NA,NA,NA,NA,1,0,1,1,1,16,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,North Kivu,Vuhovi,86,13,99,31,44,3,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,Ituri,Bunia,4,0,4,3,3,12,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,Ituri,Komanda,30,9,39,12,21,13,NA,NA,NA,NA,NA,0,0,0,0,0,7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,Ituri,Mandima,171,4,175,96,100,5,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,Ituri,Rwampara,7,0,7,3,3,3,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-26,2019-06-25,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_26juin19
+2019-06-25,2019-06-24,COD,North Kivu,Alimbongo,2,0,2,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Beni,356,9,365,218,227,0,NA,NA,NA,NA,NA,7,0,7,7,7,-38,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Biena,12,1,13,13,14,35,NA,NA,NA,NA,NA,0,0,0,0,0,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Butembo,245,0,245,272,272,26,NA,NA,NA,NA,NA,2,0,2,2,2,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Goma,0,0,0,0,0,18,NA,NA,NA,NA,NA,0,0,0,0,0,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Kalunguta,120,15,135,53,68,18,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Katwa,603,16,619,409,425,43,NA,NA,NA,NA,NA,0,0,0,1,1,22,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Kayina,8,0,8,5,5,6,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Kyondo,21,2,23,13,15,14,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Lubero,21,2,23,3,5,17,NA,NA,NA,NA,NA,1,0,1,0,0,8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Mabalako,308,16,324,215,231,30,NA,NA,NA,NA,NA,3,0,3,0,0,9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Mangurujipa,17,0,17,9,9,11,NA,NA,NA,NA,NA,1,0,1,1,1,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Masereka,38,6,44,15,21,3,NA,NA,NA,NA,NA,0,0,0,0,0,-5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Musienene,70,1,71,29,30,28,NA,NA,NA,NA,NA,1,0,1,0,0,12,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Mutwanga,8,0,8,6,6,0,NA,NA,NA,NA,NA,0,0,0,0,0,-11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Oicha,41,0,41,20,20,0,NA,NA,NA,NA,NA,0,0,0,0,0,-11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,North Kivu,Vuhovi,86,13,99,31,44,6,NA,NA,NA,NA,NA,1,0,1,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,Ituri,Bunia,4,0,4,3,3,14,NA,NA,NA,NA,NA,0,0,0,0,0,9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,Ituri,Komanda,30,9,39,12,21,6,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,Ituri,Mambasa,0,0,0,0,0,6,NA,NA,NA,NA,NA,0,0,0,0,0,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,Ituri,Mandima,171,4,175,96,100,11,NA,NA,NA,NA,NA,2,0,2,1,1,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,Ituri,Rwampara,7,0,7,3,3,4,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-25,2019-06-24,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_25juin19
+2019-06-24,2019-06-23,COD,North Kivu,Alimbongo,2,0,2,0,0,1,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Beni,349,9,358,211,220,38,NA,NA,NA,NA,NA,2,0,2,2,2,-9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Biena,12,1,13,13,14,29,NA,NA,NA,NA,NA,1,0,1,1,1,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Butembo,243,0,243,270,270,20,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Goma,0,0,0,0,0,8,NA,NA,NA,NA,NA,0,0,0,0,0,8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Kalunguta,120,15,135,53,68,17,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Katwa,603,16,619,408,424,21,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Kayina,8,0,8,5,5,9,NA,NA,NA,NA,NA,0,0,0,0,0,7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Kyondo,21,2,23,13,15,13,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Lubero,20,2,22,3,5,9,NA,NA,NA,NA,NA,0,0,0,0,0,-10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Mabalako,305,16,321,215,231,21,NA,NA,NA,NA,NA,3,0,3,1,1,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Mangurujipa,16,0,16,8,8,10,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Masereka,38,6,44,15,21,8,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Musienene,69,1,70,29,30,16,NA,NA,NA,NA,NA,1,0,1,0,0,-14,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Mutwanga,8,0,8,6,6,11,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Oicha,41,0,41,20,20,11,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,North Kivu,Vuhovi,85,13,98,31,44,3,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,Ituri,Bunia,4,0,4,3,3,5,NA,NA,NA,NA,NA,0,0,0,0,0,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,Ituri,Komanda,30,9,39,12,21,8,NA,NA,NA,NA,NA,1,0,1,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,Ituri,Mandima,169,4,173,95,99,10,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,Ituri,Rwampara,7,0,7,3,3,1,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-24,2019-06-23,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_24juin19
+2019-06-23,2019-06-22,COD,North Kivu,Alimbongo,2,0,2,0,0,1,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Beni,347,9,356,209,218,47,NA,NA,NA,NA,NA,3,0,3,1,1,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Biena,11,1,12,12,13,24,NA,NA,NA,NA,NA,0,0,0,2,2,-19,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Butembo,243,0,243,270,270,15,NA,NA,NA,NA,NA,0,0,0,2,2,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Goma,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,-12,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Kalunguta,120,15,135,53,68,16,NA,NA,NA,NA,NA,1,0,1,1,1,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Katwa,603,16,619,408,424,20,NA,NA,NA,NA,NA,0,0,0,0,0,-7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Kayina,8,0,8,5,5,2,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Kyondo,21,2,23,13,15,12,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Lubero,20,2,22,3,5,19,NA,NA,NA,NA,NA,5,0,5,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Mabalako,302,16,318,214,230,18,NA,NA,NA,NA,NA,1,0,1,1,1,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Mangurujipa,16,0,16,8,8,7,NA,NA,NA,NA,NA,1,0,1,1,1,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Masereka,38,6,44,15,21,7,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Musienene,68,1,69,29,30,30,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Mutwanga,8,0,8,6,6,12,NA,NA,NA,NA,NA,0,0,0,0,0,-19,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Oicha,41,0,41,20,20,11,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,North Kivu,Vuhovi,85,13,98,31,44,0,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,Ituri,Bunia,4,0,4,3,3,13,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,Ituri,Komanda,29,9,38,12,21,7,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,Ituri,Mandima,169,4,173,95,99,13,NA,NA,NA,NA,NA,1,0,1,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,Ituri,Rwampara,7,0,7,3,3,2,NA,NA,NA,NA,NA,1,0,1,1,1,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-23,2019-06-22,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_23juin19
+2019-06-22,2019-06-21,COD,North Kivu,Alimbongo,2,0,2,0,0,2,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Beni,344,9,353,208,217,45,NA,NA,NA,NA,NA,2,0,2,2,2,-10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Biena,11,1,12,10,11,43,NA,NA,NA,NA,NA,0,0,0,0,0,8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Butembo,243,0,243,268,268,23,NA,NA,NA,NA,NA,0,0,0,1,1,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Goma,0,0,0,0,0,12,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Kalunguta,119,15,134,52,67,18,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Katwa,603,16,619,408,424,27,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Kayina,8,0,8,5,5,3,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Kyondo,21,2,23,13,15,16,NA,NA,NA,NA,NA,0,0,0,0,0,9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Lubero,15,2,17,3,5,19,NA,NA,NA,NA,NA,3,0,3,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Mabalako,301,16,317,213,229,19,NA,NA,NA,NA,NA,6,0,6,3,3,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Mangurujipa,15,0,15,7,7,13,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Masereka,38,6,44,15,21,3,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Musienene,68,1,69,29,30,28,NA,NA,NA,NA,NA,0,0,0,0,0,-10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Mutwanga,8,0,8,6,6,31,NA,NA,NA,NA,NA,0,0,0,0,0,14,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Oicha,41,0,41,20,20,10,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,North Kivu,Vuhovi,85,13,98,31,44,3,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,Ituri,Bunia,4,0,4,3,3,9,NA,NA,NA,NA,NA,1,0,1,1,1,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,Ituri,Komanda,29,9,38,12,21,7,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,-62,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,Ituri,Mandima,168,4,172,95,99,10,NA,NA,NA,NA,NA,3,0,3,1,1,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,Ituri,Rwampara,6,0,6,2,2,2,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-22,2019-06-21,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_22juin19
+2019-06-21,2019-06-20,COD,North Kivu,Alimbongo,2,0,2,0,0,1,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Beni,342,9,351,206,215,55,NA,NA,NA,NA,NA,4,0,4,3,3,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Biena,11,1,12,10,11,35,NA,NA,NA,NA,NA,0,0,0,0,0,11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Butembo,243,0,243,267,267,27,NA,NA,NA,NA,NA,0,0,0,2,2,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Goma,0,0,0,0,0,12,NA,NA,NA,NA,NA,0,0,0,0,0,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Kalunguta,119,15,134,52,67,14,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Katwa,603,16,619,408,424,33,NA,NA,NA,NA,NA,1,0,1,3,3,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Kayina,8,0,8,5,5,2,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Kyondo,21,2,23,13,15,7,NA,NA,NA,NA,NA,0,0,0,0,0,-12,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Lubero,12,2,14,3,5,16,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Mabalako,295,16,311,210,226,18,NA,NA,NA,NA,NA,0,0,0,2,2,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Mangurujipa,15,0,15,7,7,15,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Masereka,38,6,44,15,21,6,NA,NA,NA,NA,NA,0,0,0,0,0,-4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Musienene,68,1,69,29,30,38,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Mutwanga,8,0,8,6,6,17,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Oicha,41,0,41,20,20,13,NA,NA,NA,NA,NA,0,0,0,0,0,10,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,North Kivu,Vuhovi,85,13,98,31,44,4,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,Ituri,Bunia,3,0,3,2,2,8,NA,NA,NA,NA,NA,1,0,1,0,0,-8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,Ituri,Komanda,29,9,38,12,21,10,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,Ituri,Mambasa,0,0,0,0,0,62,NA,NA,NA,NA,NA,0,0,0,0,0,62,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,Ituri,Mandima,165,4,169,94,98,7,NA,NA,NA,NA,NA,1,0,1,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,Ituri,Rwampara,6,0,6,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-21,2019-06-20,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_21juin19
+2019-06-20,2019-06-19,COD,North Kivu,Alimbongo,2,0,2,0,0,1,NA,NA,NA,NA,NA,1,0,1,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Beni,338,9,347,203,212,56,NA,NA,NA,NA,NA,5,0,5,4,4,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Biena,11,1,12,10,11,24,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Butembo,243,0,243,265,265,17,NA,NA,NA,NA,NA,0,0,0,2,2,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Goma,0,0,0,0,0,20,NA,NA,NA,NA,NA,0,0,0,0,0,8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Kalunguta,119,15,134,52,67,17,NA,NA,NA,NA,NA,3,0,3,1,1,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Katwa,602,16,618,405,421,39,NA,NA,NA,NA,NA,1,0,1,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Kayina,8,0,8,5,5,1,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Kyondo,21,2,23,13,15,19,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Lubero,12,2,14,3,5,16,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Mabalako,295,16,311,208,224,13,NA,NA,NA,NA,NA,4,0,4,2,2,-17,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Mangurujipa,15,0,15,7,7,14,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Masereka,38,6,44,15,21,10,NA,NA,NA,NA,NA,0,0,0,0,0,7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Musienene,68,1,69,29,30,39,NA,NA,NA,NA,NA,0,0,0,0,0,4,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Mutwanga,8,0,8,6,6,19,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Oicha,41,0,41,20,20,3,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,North Kivu,Vuhovi,85,13,98,31,44,4,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,Ituri,Bunia,2,0,2,2,2,16,NA,NA,NA,NA,NA,0,0,0,0,0,5,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,Ituri,Komanda,29,9,38,12,21,9,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,Ituri,Mandima,164,4,168,94,98,10,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,Ituri,Rwampara,6,0,6,2,2,2,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-20,2019-06-19,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_20juin19
+2019-06-19,2019-06-18,COD,North Kivu,Alimbongo,1,0,1,0,0,2,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Beni,333,9,342,199,208,56,NA,NA,NA,NA,NA,3,0,3,5,5,11,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Biena,11,1,12,10,11,24,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Butembo,243,0,243,263,263,15,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Goma,0,0,0,0,0,12,NA,NA,NA,NA,NA,0,0,0,0,0,-7,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Kalunguta,116,15,131,51,66,15,NA,NA,NA,NA,NA,0,0,0,0,0,-17,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Katwa,601,16,617,405,421,34,NA,NA,NA,NA,NA,0,0,0,1,1,17,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Kayina,8,0,8,5,5,2,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Kyondo,21,2,23,13,15,14,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Lubero,12,2,14,3,5,14,NA,NA,NA,NA,NA,0,0,0,0,0,3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Mabalako,291,16,307,206,222,30,NA,NA,NA,NA,NA,3,0,3,4,4,15,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Mangurujipa,15,0,15,7,7,9,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Masereka,38,6,44,15,21,3,NA,NA,NA,NA,NA,0,0,0,0,0,-6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Musienene,68,1,69,29,30,35,NA,NA,NA,NA,NA,1,0,1,0,0,6,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Mutwanga,8,0,8,6,6,25,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Oicha,41,0,41,20,20,6,NA,NA,NA,NA,NA,0,0,0,0,0,-9,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,North Kivu,Vuhovi,85,13,98,31,44,1,NA,NA,NA,NA,NA,0,0,0,0,0,-3,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,Ituri,Bunia,2,0,2,2,2,11,NA,NA,NA,NA,NA,0,0,0,0,0,2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,Ituri,Komanda,29,9,38,12,21,6,NA,NA,NA,NA,NA,0,0,0,0,0,-2,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,Ituri,Mambasa,0,0,0,0,0,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,Ituri,Mandima,164,4,168,94,98,10,NA,NA,NA,NA,NA,2,0,2,1,1,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,Ituri,Nyankunde,1,0,1,1,1,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,Ituri,Rwampara,6,0,6,2,2,1,NA,NA,NA,NA,NA,0,0,0,0,0,-1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
+2019-06-19,2019-06-18,COD,Ituri,Tchomia,2,0,2,2,2,0,NA,NA,NA,NA,NA,0,0,0,0,0,0,https://mailchi.mp/sante.gouv.cd/ebola_kivu_19juin19
 2019-06-18,2019-06-17,COD,North Kivu,Alimbongo,1,0,1,0,0,1,NA,NA,NA,NA,NA,0,0,0,0,0,1,https://mailchi.mp/sante.gouv.cd/ebola_kivu_18juin19
 2019-06-18,2019-06-17,COD,North Kivu,Beni,330,9,339,194,203,45,NA,NA,NA,NA,NA,1,0,1,0,0,8,https://mailchi.mp/sante.gouv.cd/ebola_kivu_18juin19
 2019-06-18,2019-06-17,COD,North Kivu,Biena,11,1,12,10,11,22,NA,NA,NA,NA,NA,0,0,0,0,0,-12,https://mailchi.mp/sante.gouv.cd/ebola_kivu_18juin19
