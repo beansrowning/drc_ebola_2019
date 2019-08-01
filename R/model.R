@@ -1,7 +1,7 @@
 library(pomp)
 library(dplyr)
-library(readr)
 library(tidyr)
+library(lubridate)
 
 drc_ebola_data <- read.csv("data/health_zone_counts.csv", stringsAsFactors = FALSE) %>%
   mutate(
@@ -37,27 +37,7 @@ drc_ebola_data <- drc_ebola_data %>%
 
 
 # Population from 2018 World Bank estimates (https://data.worldbank.org/indicator/SP.POP.TOTL?locations=CD)
-populations <- c(DRC = 84068091)
-
-## Parameter transformations
-
-paruntrans <- Csnippet('
-  double *IC = &S_0;
-  double *TIC = &TS_0;
-  TR0 = log(R0);
-  Trho = logit(rho);
-  Tk = log(k);
-  to_log_barycentric(TIC,IC,4);
-')
-
-partrans <- Csnippet('
-  double *IC = &S_0;
-  double *TIC = &TS_0;
-  TR0 = exp(R0);
-  Trho = expit(rho);
-  Tk = exp(k);
-  from_log_barycentric(TIC,IC,4);
-')
+population <- c(DRC = 84068091)
 
 ##  Measurement model: hierarchical model for cases
 ## p(C_t | H_t): Negative binomial with mean rho*H_t and variance rho*H_t*(1+k*rho*H_t)
@@ -150,7 +130,7 @@ ebolaModel <- function(
 
   type <- match.arg(type)
   ctry <- match.arg(country)
-  pop <- unname(populations[ctry])
+  pop <- unname(population[ctry])
 
   ## Incubation period is supposed to be Gamma distributed with shape parameter 3
   ## and mean 11.4 days.  The discrete-time formula is used to calculate the
@@ -218,23 +198,25 @@ ebolaModel <- function(
     globals = globs,
     obsnames = c("cases", "deaths"),
     statenames = c("S", "E1", "I", "R", "N_EI", "N_IR"),
-    zeronames = if (type=="raw") c("N_EI", "N_IR") else character(0),
-    paramnames=c("N","R0","alpha","gamma","rho","k","cfr",
+    accumvars = if (type == "raw") c("N_EI", "N_IR") else character(0),
+    paramnames = c("N","R0","alpha","gamma","rho","k","cfr",
                  "S_0","E_0","I_0","R_0"),
-    nstageE=nstageE,
-    dmeasure=if (least.sq) dObsLS else dObs,
-    rmeasure=if (least.sq) rObsLS else rObs,
-    rprocess=discrete.time.sim(step.fun=rSim,delta.t=timestep),
-    skeleton=skel,
-    skeleton.type="vectorfield",
-    parameter.transform=partrans,
-    parameter.inv.transform=paruntrans,
-    initializer = function (params, t0, nstageE, ...) {
-      all.state.names <- c("S", paste0("E",1:nstageE),"I","R","N_EI","N_IR")
-      comp.names <- c("S",paste0("E",1:nstageE),"I","R")
-      x0 <- setNames(numeric(length(all.state.names)),all.state.names)
-      frac <- c(params["S_0"],rep(params["E_0"]/nstageE,nstageE),params["I_0"],params["R_0"])
-      x0[comp.names] <- round(params["N"]*frac/sum(frac))
+    nstageE = nstageE,
+    dmeasure = if (least.sq) dObsLS else dObs,
+    rmeasure = if (least.sq) rObsLS else rObs,
+    rprocess = discrete_time(step.fun = rSim, delta.t = timestep),
+    skeleton = vectorfield(skel),
+    partrans = parameter_trans(
+      log = c("R0", "k"),
+      logit = "rho",
+      barycentric = c("S_0", "E_0", "I_0", "R_0")
+      ),
+    rinit = function (S_0, E_0, I_0, R_0, N, t0, nstageE, ...) {
+      all.state.names <- c("S", paste0("E", 1:nstageE),"I", "R", "N_EI", "N_IR")
+      comp.names <- c("S", paste0("E", 1:nstageE), "I", "R")
+      x0 <- setNames(numeric(length(all.state.names)), all.state.names)
+      frac <- c(S_0, rep(E_0 / nstageE, nstageE), I_0, R_0)
+      x0[comp.names] <- round(N * frac / sum(frac))
       x0
       }
     ) -> po
