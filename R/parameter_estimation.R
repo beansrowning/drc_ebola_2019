@@ -142,7 +142,7 @@ profk <- bake(file = "output/k_fits.rds", {
       .combine = rbind,
       .inorder = FALSE) %dopar% {
 
-      tm <- models[[type]][[1]]
+      tm <- models[[type]]
 
       tic <- Sys.time()
       
@@ -312,7 +312,7 @@ profR0_if <- bake(file = "output/R0_fits_if_maxima.rds",{
         select(-country, -type) %>%
         unlist()
 
-      po <- models[[country]]
+      po <- models[[type]]
 
       coef(po, names(st)) <- unname(st)
 
@@ -328,7 +328,6 @@ profR0_if <- bake(file = "output/R0_fits_if_maxima.rds",{
       nfail <- sapply(pf, getElement, "nfail")
 
       data.frame(
-        country = country,
         type = type,
         as.list(coef(po)),
         loglik = ll[1],
@@ -404,7 +403,6 @@ profk_if <- bake(file = "output/k_fits_if.rds", {
       units(etime) <- "hours"
 
       data.frame(
-        country = country,
         type = type,
         as.list(coef(mf)),
         loglik = ll[1],
@@ -440,7 +438,7 @@ profk_if <- bake(file = "output/k_fits_if_maxima.rds", {
         select(-country, -type) %>%
         unlist()
 
-      po <- models[[country]]
+      po <- models[[type]]
       coef(po,names(st)) <- unname(st)
 
       ## Runs 10 particle filters to assess Monte Carlo error in likelihood
@@ -455,7 +453,6 @@ profk_if <- bake(file = "output/k_fits_if_maxima.rds", {
       nfail <- sapply(pf, getElement, "nfail")
 
       data.frame(
-        country = country,
         type = type,
         as.list(coef(po)),
         loglik = ll[1],
