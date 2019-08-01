@@ -135,8 +135,8 @@ profk <- bake(file = "output/k_fits.rds", {
   out <- foreach(
     start = iter(starts, by = "row"),
     .combine = rbind,
-    .inorder = FALSE,
-    .noexport = "models") %:%
+    .inorder = FALSE
+    ) %:%
     foreach(
       type = c("raw", "cum"),
       .combine = rbind,
