@@ -24,7 +24,7 @@ dataset <- pull_dataset("383945db-762c-46e2-bec6-07adc41fbd16")
 health_zone_figures <- dataset %>%
   get_resource(2) %>%
   read_resource(folder = tmp_folder) %>%
-  write_csv(file.path(data_folder,"health_zone_counts.csv"))
+  write_csv(file.path(data_folder, "health_zone_counts.csv"))
 
 # Cumulative cases and deaths country-wide for model
 drc_ebola_data <- health_zone_figures %>%
@@ -57,9 +57,9 @@ drc_ebola_data <- health_zone_figures %>%
     new_cases = cases - lag(cases, default = NA),
     new_deaths = deaths - lag(deaths, default = NA)
   ) %>%
-  write_csv(file.path(data_folder,"drc_model_counts.csv"))
+  write_csv(file.path(data_folder, "drc_model_counts.csv"))
 
-  
+
 # === Download shapefiles ================================================== #
 # https://data.humdata.org/dataset/democratic-republic-of-congo-health-boundaries
 shape_dataset <- pull_dataset("9690f4f5-d9e5-469a-b9dd-ae59b629a853")
@@ -72,5 +72,3 @@ health_zones <- shape_dataset %>%
 
 districts$download(folder = file.path(data_folder, "shape_file"), filename = "drc_districts.geojson")
 health_zones$download(folder = file.path(data_folder, "shape_file"), filename = "drc_health_zones.geojson")
-
-

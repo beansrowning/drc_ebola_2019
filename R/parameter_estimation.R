@@ -25,7 +25,7 @@ models <- c(
 n_cores <- ifelse(
   Sys.getenv("N_CORES") == character(1),
   detectCores() - 1,
-  as.numeric(Sys.getenv("N_CORES"))
+  as.numeric(Sys.getenv("N_CORES") - 1)
 )
 
 sprintf("Making cluster with %d cores", n_cores)
@@ -34,20 +34,19 @@ clust <- makeCluster(n_cores, ifelse(.Platform$OS.type == "windows", "PSOCK", "F
 registerDoParallel(clust)
 
 # Define helper function to save results to file
-bake <- function (file, expr) {
+bake <- function(file, expr) {
   if (file.exists(file)) {
     readRDS(file)
-    } else {
-      val <- eval(expr)
-      saveRDS(val, file = file)
-      val
-      }
+  } else {
+    val <- eval(expr)
+    saveRDS(val, file = file)
+    val
   }
+}
 
 # === Trajectory matching the R0 profile ========================================================
 
 profR0 <- bake(file = "output/model_fits/R0_fits.rds", {
-
   starts <- profileDesign(
     R0 = seq(1, 3, length = 200),
     upper = c(k = 1),
@@ -59,18 +58,17 @@ profR0 <- bake(file = "output/model_fits/R0_fits.rds", {
     start = iter(starts, by = "row"),
     .combine = rbind,
     .inorder = FALSE
-    ) %:%
+  ) %:%
     foreach(
       type = c("raw", "cum"),
       .combine = rbind,
       .inorder = FALSE,
       .packages = c("pomp", "subplex")
-      ) %dopar% {
-
+    ) %dopar% {
       tm <- models[[type]]
 
       tic <- Sys.time()
-      
+
       coef(tm, names(start)) <- unname(unlist(start))
 
       coef(tm, "rho") <- 0.2
@@ -82,12 +80,12 @@ profR0 <- bake(file = "output/model_fits/R0_fits.rds", {
 
       if (coef(tm, "k") == 0) {
         coef(tm, "k") <- 1e-8
-      } 
+      }
       if (coef(tm, "E_0") == 0) {
         coef(tm, "E_0") <- 1e-12
-      } 
+      }
       if (coef(tm, "I_0") == 0) {
-        coef(tm,"I_0") <- 1e-12
+        coef(tm, "I_0") <- 1e-12
       }
 
       tm_optim <- subplex(
@@ -100,9 +98,9 @@ profR0 <- bake(file = "output/model_fits/R0_fits.rds", {
 
       # Compute system time
       etime <- toc - tic
-      
+
       units(etime) <- "hours"
-      
+
       data.frame(
         country = "DRC",
         type = type,
@@ -111,26 +109,26 @@ profR0 <- bake(file = "output/model_fits/R0_fits.rds", {
         conv = tm_optim$convergence,
         etime = as.numeric(etime)
       )
-      } 
-      
+    }
+
   # Final transformation
-  out <- out %>% mutate(
-    sum = S_0 + E_0 + I_0 + R_0,
-    S_0 = round(N * S_0 / sum),
-    E_0 = round(N * E_0 / sum),
-    I_0 = round(N * I_0 / sum),
-    R_0 = round(N * R_0 / sum)
-  ) %>%
-  filter(conv %in% 0:1) %>%
-  select(-sum) %>%
-  distinct()
+  out <- out %>%
+    mutate(
+      sum = S_0 + E_0 + I_0 + R_0,
+      S_0 = round(N * S_0 / sum),
+      E_0 = round(N * E_0 / sum),
+      I_0 = round(N * I_0 / sum),
+      R_0 = round(N * R_0 / sum)
+    ) %>%
+    filter(conv %in% 0:1) %>%
+    select(-sum) %>%
+    distinct()
 
   out
 })
 
 # === Trajectory Matching the k profile ===================================================
 profk <- bake(file = "output/model_fits/k_fits.rds", {
-
   starts <- profileDesign(
     k = seq(0, 1, length = 100),
     upper = c(R0 = 1),
@@ -142,18 +140,17 @@ profk <- bake(file = "output/model_fits/k_fits.rds", {
     start = iter(starts, by = "row"),
     .combine = rbind,
     .inorder = FALSE
-    ) %:%
+  ) %:%
     foreach(
       type = c("raw", "cum"),
       .combine = rbind,
       .inorder = FALSE,
       .packages = c("pomp", "subplex")
     ) %dopar% {
-
       tm <- models[[type]]
 
       tic <- Sys.time()
-      
+
       coef(tm, names(start)) <- unname(unlist(start))
 
       coef(tm, "rho") <- 0.2
@@ -165,9 +162,9 @@ profk <- bake(file = "output/model_fits/k_fits.rds", {
 
       if (coef(tm, "E_0") == 0) {
         coef(tm, "E_0") <- 1e-12
-      } 
+      }
       if (coef(tm, "I_0") == 0) {
-        coef(tm,"I_0") <- 1e-12
+        coef(tm, "I_0") <- 1e-12
       }
 
       tm_optim <- subplex(
@@ -180,9 +177,9 @@ profk <- bake(file = "output/model_fits/k_fits.rds", {
 
       # Compute system time
       etime <- toc - tic
-      
+
       units(etime) <- "hours"
-      
+
       data.frame(
         country = "DRC",
         type = type,
@@ -191,19 +188,20 @@ profk <- bake(file = "output/model_fits/k_fits.rds", {
         conv = tm_optim$convergence,
         etime = as.numeric(etime)
       )
-      } 
-      
+    }
+
   # Final transformation
-  out <- out %>% mutate(
-    sum = S_0 + E_0 + I_0 + R_0,
-    S_0 = round(N * S_0 / sum),
-    E_0 = round(N * E_0 / sum),
-    I_0 = round(N * I_0 / sum),
-    R_0 = round(N * R_0 / sum)
-  ) %>%
-  filter(conv %in% 0:1) %>%
-  select(-sum) %>%
-  distinct()
+  out <- out %>%
+    mutate(
+      sum = S_0 + E_0 + I_0 + R_0,
+      S_0 = round(N * S_0 / sum),
+      E_0 = round(N * E_0 / sum),
+      I_0 = round(N * I_0 / sum),
+      R_0 = round(N * R_0 / sum)
+    ) %>%
+    filter(conv %in% 0:1) %>%
+    select(-sum) %>%
+    distinct()
 
   out
 })
@@ -228,83 +226,81 @@ profR0_if <- bake(file = "output/model_fits/R0_fits_if.rds", {
     select(-c(loglik, etime, conv, profile))
 
 
-  foreach (
+  foreach(
     start = iter(pars, by = "row"),
     .combine = rbind,
     .inorder = FALSE,
     .packages = c("pomp", "dplyr")
   ) %dopar% {
-      tic <- Sys.time()
+    tic <- Sys.time()
 
-      type <- as.character(start$type)
+    type <- as.character(start$type)
 
-      st <- start %>%
-        select(-country, -type) %>%
-        unlist()
+    st <- start %>%
+      select(-country, -type) %>%
+      unlist()
 
-      po <- models[[type]]
+    po <- models[[type]]
 
-      coef(po, names(st)) <- st
+    coef(po, names(st)) <- st
 
-      if (coef(po, "E_0") == 0) {
-        coef(po, "E_0") <- 1e-5
-      }
-      if (coef(po, "I_0") == 0) {
-        coef(po, "I_0") <- 1e-5
-      }
+    if (coef(po, "E_0") == 0) {
+      coef(po, "E_0") <- 1e-5
+    }
+    if (coef(po, "I_0") == 0) {
+      coef(po, "I_0") <- 1e-5
+    }
 
-      mf <- mif2(
-        po,
-        Nmif = 10,
-        rw.sd = rw.sd(
-          k = 0.02,
-          E_0 = 1,
-          I_0 = 1
-        ),
-        Np = 2000,
-        cooling.type = "hyperbolic",
-        cooling.fraction.50 = 0.5,
-        verbose = FALSE
-      )
+    mf <- mif2(
+      po,
+      Nmif = 10,
+      rw.sd = rw.sd(
+        k = 0.02,
+        E_0 = 1,
+        I_0 = 1
+      ),
+      Np = 2000,
+      cooling.type = "hyperbolic",
+      cooling.fraction.50 = 0.5,
+      verbose = FALSE
+    )
 
-      mf <- continue(
-        mf,
-        Nmif = 50,
-        cooling.fraction.50 = 0.1
-      )
+    mf <- continue(
+      mf,
+      Nmif = 50,
+      cooling.fraction.50 = 0.1
+    )
 
-      ## Runs 10 particle filters to assess Monte Carlo error in likelihood
-      pf <- replicate(
-        10,
-        pfilter(mf, Np = 5000, max.fail = Inf)
-      
-      )
-      ll <- sapply(pf, logLik)
-      ll <- logmeanexp(ll, se = TRUE)
-      nfail <- sapply(pf, getElement, "nfail")
+    ## Runs 10 particle filters to assess Monte Carlo error in likelihood
+    pf <- replicate(
+      10,
+      pfilter(mf, Np = 5000, max.fail = Inf)
+    )
+    ll <- sapply(pf, logLik)
+    ll <- logmeanexp(ll, se = TRUE)
+    nfail <- sapply(pf, getElement, "nfail")
 
-      toc <- Sys.time()
+    toc <- Sys.time()
 
-      etime <- toc - tic
+    etime <- toc - tic
 
-      units(etime) <- "hours"
+    units(etime) <- "hours"
 
-      data.frame(
-        type = type,
-        as.list(coef(mf)),
-        loglik = ll[1],
-        loglik.se = ll[2],
-        nfail.min = min(nfail),
-        nfail.max = max(nfail),
-        etime = as.numeric(etime)
-      )
-      }
-  })
+    data.frame(
+      type = type,
+      as.list(coef(mf)),
+      loglik = ll[1],
+      loglik.se = ll[2],
+      nfail.min = min(nfail),
+      nfail.max = max(nfail),
+      etime = as.numeric(etime)
+    )
+  }
+})
 
 ## Filter once more on maxima
 
-profR0_if <- bake(file = "output/model_fits/R0_fits_if_maxima.rds",{
-
+profR0_if <- bake(file = "output/model_fits/R0_fits_if_maxima.rds", {
   pars <- profR0_if %>%
     dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
     group_by(type, R0) %>%
@@ -317,46 +313,45 @@ profR0_if <- bake(file = "output/model_fits/R0_fits_if_maxima.rds",{
     .combine = rbind,
     .inorder = FALSE,
     .packages = c("pomp", "dplyr")
-    ) %dopar% {
-      tic <- Sys.time()
+  ) %dopar% {
+    tic <- Sys.time()
 
-      type <- as.character(start$type)
+    type <- as.character(start$type)
 
-      st <- start %>%
-        select(-country, -type) %>%
-        unlist()
+    st <- start %>%
+      select(-country, -type) %>%
+      unlist()
 
-      po <- models[[type]]
+    po <- models[[type]]
 
-      coef(po, names(st)) <- unname(st)
+    coef(po, names(st)) <- unname(st)
 
-      ## Runs 10 particle filters to assess Monte Carlo error in likelihood
-      pf <- try(replicate(10, pfilter(po, Np = 5000, max.fail = Inf)))
+    ## Runs 10 particle filters to assess Monte Carlo error in likelihood
+    pf <- try(replicate(10, pfilter(po, Np = 5000, max.fail = Inf)))
 
-      toc <- Sys.time()
-      etime <- toc - tic
-      units(etime) <- "hours"
+    toc <- Sys.time()
+    etime <- toc - tic
+    units(etime) <- "hours"
 
-      ll <- sapply(pf, logLik)
-      ll <- logmeanexp(ll, se = TRUE)
-      nfail <- sapply(pf, getElement, "nfail")
+    ll <- sapply(pf, logLik)
+    ll <- logmeanexp(ll, se = TRUE)
+    nfail <- sapply(pf, getElement, "nfail")
 
-      data.frame(
-        type = type,
-        as.list(coef(po)),
-        loglik = ll[1],
-        loglik.se = ll[2],
-        nfail.min = min(nfail),
-        nfail.max = max(nfail),
-        etime = as.numeric(etime)
-      )
-      }
-  })
+    data.frame(
+      type = type,
+      as.list(coef(po)),
+      loglik = ll[1],
+      loglik.se = ll[2],
+      nfail.min = min(nfail),
+      nfail.max = max(nfail),
+      etime = as.numeric(etime)
+    )
+  }
+})
 
 ## Iterated filtering, k profile
 
 profk_if <- bake(file = "output/model_fits/k_fits_if.rds", {
-
   pars <- profTM %>%
     dplyr::filter(profile == "k") %>%
     group_by(country, type) %>%
@@ -366,77 +361,76 @@ profk_if <- bake(file = "output/model_fits/k_fits_if.rds", {
     ungroup() %>%
     select(-c(loglik, etime, conv, profile))
 
-  foreach (
+  foreach(
     start = iter(pars, by = "row"),
     .combine = rbind,
     .inorder = FALSE,
     .packages = c("pomp", "dplyr")
   ) %dopar% {
-      tic <- Sys.time()
+    tic <- Sys.time()
 
-      type <- as.character(start$type)
+    type <- as.character(start$type)
 
-      st <- start %>%
-        select(-county, -type) %>%
-        unlist()
+    st <- start %>%
+      select(-county, -type) %>%
+      unlist()
 
-      po <- models[[type]]
+    po <- models[[type]]
 
-      coef(po, names(st)) <- st
+    coef(po, names(st)) <- st
 
-      if (coef(po, "E_0") == 0) {
-        coef(po, "E_0") <- 1e-5
-      }
-      if (coef(po, "I_0") == 0) {
-        coef(po, "I_0") <- 1e-5
-      }
+    if (coef(po, "E_0") == 0) {
+      coef(po, "E_0") <- 1e-5
+    }
+    if (coef(po, "I_0") == 0) {
+      coef(po, "I_0") <- 1e-5
+    }
 
-      mf <- mif2(
-        po,
-        Nmif = 10,
-        rw.sd = rw.sd(
-          R0 = 0.02,
-          E_0 = 1,
-          I_0 = 1
-        ),
-        ivps = c("E_0", "I_0"),
-        Np = 2000,
-        cooling.type = "hyperbolic",
-        cooling.fraction.50 = 0.5,
-        verbose = FALSE
-      )
+    mf <- mif2(
+      po,
+      Nmif = 10,
+      rw.sd = rw.sd(
+        R0 = 0.02,
+        E_0 = 1,
+        I_0 = 1
+      ),
+      ivps = c("E_0", "I_0"),
+      Np = 2000,
+      cooling.type = "hyperbolic",
+      cooling.fraction.50 = 0.5,
+      verbose = FALSE
+    )
 
-      mf <- continue(
-        mf,
-        Nmif = 50,
-        cooling.fraction.50 = 0.1
-      )
+    mf <- continue(
+      mf,
+      Nmif = 50,
+      cooling.fraction.50 = 0.1
+    )
 
-      ## Runs 10 particle filters to assess Monte Carlo error in likelihood
-      pf <- replicate(10, pfilter(mf, Np = 5000, max.fail = Inf))
-      ll <- sapply(pf, logLik)
-      ll <- logmeanexp(ll, se = TRUE)
-      nfail <- sapply(pf, getElement, "nfail")
-      toc <- Sys.time()
-      etime <- toc - tic
-      units(etime) <- "hours"
+    ## Runs 10 particle filters to assess Monte Carlo error in likelihood
+    pf <- replicate(10, pfilter(mf, Np = 5000, max.fail = Inf))
+    ll <- sapply(pf, logLik)
+    ll <- logmeanexp(ll, se = TRUE)
+    nfail <- sapply(pf, getElement, "nfail")
+    toc <- Sys.time()
+    etime <- toc - tic
+    units(etime) <- "hours"
 
-      data.frame(
-        type = type,
-        as.list(coef(mf)),
-        loglik = ll[1],
-        loglik.se = ll[2],
-        nfail.min = min(nfail),
-        nfail.max = max(nfail),
-        etime = as.numeric(etime)
-      )
-      }
-  })
+    data.frame(
+      type = type,
+      as.list(coef(mf)),
+      loglik = ll[1],
+      loglik.se = ll[2],
+      nfail.min = min(nfail),
+      nfail.max = max(nfail),
+      etime = as.numeric(etime)
+    )
+  }
+})
 
 ## Filter once more on maxima
 
 profk_if <- bake(file = "output/model_fits/k_fits_if_maxima.rds", {
-
   pars <- profk_if %>%
     dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
     group_by(type, R0) %>%
@@ -450,39 +444,39 @@ profk_if <- bake(file = "output/model_fits/k_fits_if_maxima.rds", {
     .inorder = FALSE,
     .packages = c("pomp", "dplyr")
   ) %dopar% {
-      tic <- Sys.time()
+    tic <- Sys.time()
 
-      type <- as.character(start$type)
+    type <- as.character(start$type)
 
-      st <- start %>%
-        select(-country, -type) %>%
-        unlist()
+    st <- start %>%
+      select(-country, -type) %>%
+      unlist()
 
-      po <- models[[type]]
-      coef(po, names(st)) <- unname(st)
+    po <- models[[type]]
+    coef(po, names(st)) <- unname(st)
 
-      ## Runs 10 particle filters to assess Monte Carlo error in likelihood
-      pf <- try(replicate(10, pfilter(po, Np = 5000, max.fail = Inf)))
+    ## Runs 10 particle filters to assess Monte Carlo error in likelihood
+    pf <- try(replicate(10, pfilter(po, Np = 5000, max.fail = Inf)))
 
-      toc <- Sys.time()
-      etime <- toc - tic
-      units(etime) <- "hours"
+    toc <- Sys.time()
+    etime <- toc - tic
+    units(etime) <- "hours"
 
-      ll <- sapply(pf, logLik)
-      ll <- logmeanexp(ll, se = TRUE)
-      nfail <- sapply(pf, getElement, "nfail")
+    ll <- sapply(pf, logLik)
+    ll <- logmeanexp(ll, se = TRUE)
+    nfail <- sapply(pf, getElement, "nfail")
 
-      data.frame(
-        type = type,
-        as.list(coef(po)),
-        loglik = ll[1],
-        loglik.se = ll[2],
-        nfail.min = min(nfail),
-        nfail.max = max(nfail),
-        etime = as.numeric(etime)
-      )
-      }
-  })
+    data.frame(
+      type = type,
+      as.list(coef(po)),
+      loglik = ll[1],
+      loglik.se = ll[2],
+      nfail.min = min(nfail),
+      nfail.max = max(nfail),
+      etime = as.numeric(etime)
+    )
+  }
+})
 
 # Combine iterative filtering runs
 profIF <- profR0_if %>%

@@ -17,7 +17,7 @@ if (!dir.exists(tmp_dir)) {
   cat("*.*", file = file.path(tmp_dir, ".gitignore"))
 }
 # === Load Ebola counts ===================================================
-# NOTE: 
+# NOTE:
 # - This pulls from a live CSV that is updated by update_ebola_counts.R
 # - incident counts are back-computed from cumulative counts, so totals will not
 #   match up.
@@ -25,14 +25,14 @@ if (!dir.exists(tmp_dir)) {
 #   refining calc to use only confirmed cases, etc.
 drc_ebola_data <- read.csv(file.path(data_dir, "drc_model_counts.csv"), stringsAsFactors = FALSE) %>%
   select(
-    country, week, date, 
+    country, week, date,
     cases = new_cases, deaths = new_deaths
   ) %>%
   slice(-1) %>%
   mutate(
     date = as_date(date),
     week = week - 1
-    ) %>%
+  ) %>%
   as_tibble()
 
 # Population from 2018 World Bank estimates (https://data.worldbank.org/indicator/SP.POP.TOTL?locations=CD)
@@ -123,11 +123,10 @@ skel <- Csnippet('
 ')
 
 ebolaModel <- function(
-  country = c("DRC"),
-  data = NULL,
-  timestep = 0.01, nstageE = 3L,
-  type = c("raw","cum"), na.rm = FALSE, least.sq = FALSE) {
-
+                       country = c("DRC"),
+                       data = NULL,
+                       timestep = 0.01, nstageE = 3L,
+                       type = c("raw", "cum"), na.rm = FALSE, least.sq = FALSE) {
   type <- match.arg(type)
   ctry <- match.arg(country)
   pop <- unname(population[ctry])
@@ -142,14 +141,14 @@ ebolaModel <- function(
   dt <- timestep
   nstageE <- as.integer(nstageE)
 
-  globs <- paste0("static int nstageE = ", nstageE, ";");
+  globs <- paste0("static int nstageE = ", nstageE, ";")
 
   theta <- c(
     N = pop,
     R0 = 1.4,
     alpha = -1 / (nstageE * dt) * log(1 - nstageE * dt / incubation_period),
     gamma = -log(1 - dt / infectious_period) / dt,
-    rho = 0.2, 
+    rho = 0.2,
     cfr = 0.7,
     k = 0,
     S_0 = 1 - index_case,
@@ -170,7 +169,7 @@ ebolaModel <- function(
         cases = cumsum(cases),
         deaths = cumsum(deaths)
       )
-    }
+  }
 
   ## Create the pomp object
   pomp(
@@ -183,8 +182,10 @@ ebolaModel <- function(
     obsnames = c("cases", "deaths"),
     statenames = c("S", "E1", "I", "R", "N_EI", "N_IR"),
     accumvars = if (type == "raw") c("N_EI", "N_IR") else character(0),
-    paramnames = c("N","R0","alpha","gamma","rho","k","cfr",
-                 "S_0","E_0","I_0","R_0"),
+    paramnames = c(
+      "N", "R0", "alpha", "gamma", "rho", "k", "cfr",
+      "S_0", "E_0", "I_0", "R_0"
+    ),
     nstageE = nstageE,
     dmeasure = if (least.sq) dObsLS else dObs,
     rmeasure = if (least.sq) rObsLS else rObs,
@@ -194,14 +195,14 @@ ebolaModel <- function(
       log = c("R0", "k"),
       logit = "rho",
       barycentric = c("S_0", "E_0", "I_0", "R_0")
-      ),
-    rinit = function (S_0, E_0, I_0, R_0, N, t0, nstageE, ...) {
-      all.state.names <- c("S", paste0("E", 1:nstageE),"I", "R", "N_EI", "N_IR")
+    ),
+    rinit = function(S_0, E_0, I_0, R_0, N, t0, nstageE, ...) {
+      all.state.names <- c("S", paste0("E", 1:nstageE), "I", "R", "N_EI", "N_IR")
       comp.names <- c("S", paste0("E", 1:nstageE), "I", "R")
       x0 <- setNames(numeric(length(all.state.names)), all.state.names)
       frac <- c(S_0, rep(E_0 / nstageE, nstageE), I_0, R_0)
       x0[comp.names] <- round(N * frac / sum(frac))
       x0
-      }
-    )
-  }
+    }
+  )
+}
