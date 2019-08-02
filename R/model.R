@@ -1,46 +1,36 @@
+# ==================================================================== #
+# SEIR Ebola model (from King, et al. 2015)                            #
+# Sean Browning                                                        #
+# ==================================================================== #
 library(pomp)
 library(dplyr)
-library(tidyr)
 library(lubridate)
 
-drc_ebola_data <- read.csv("data/health_zone_counts.csv", stringsAsFactors = FALSE) %>%
-  mutate(
-    week = epiweek(report_date),
-    year = epiyear(report_date)
+# === Load Ebola counts ===================================================
+# NOTE: 
+# - This pulls from a live CSV that is updated by update_ebola_counts.R
+# - incident counts are back-computed from cumulative counts, so totals will not
+#   match up.
+# - A better fit might be achieved with taking cumulative counts as-is, or
+#   refining calc to use only confirmed cases, etc.
+drc_ebola_data <- read.csv("data/drc_model_counts.csv", stringsAsFactors = FALSE) %>%
+  select(
+    country, week, date, 
+    cases = new_cases, deaths = new_deaths
   ) %>%
-  group_by(country, week, year) %>%
+  slice(-1) %>%
   mutate(
-    date = min(report_date)
-  ) %>%
-  group_by(country, week, date, year) %>%
-  summarize(
-    cases = sum(total_cases_change, na.rm = TRUE)
-  ) %>%
-  ungroup()
-
-drc_ebola_data_2018 <- drc_ebola_data %>%
-  filter(year == 2018) %>%
-  mutate(
-    week = week - min(week) + 1
-  )
-
-drc_ebola_data <- drc_ebola_data %>%
-  filter(year == 2019) %>%
-  mutate(
-    week = week + nrow(drc_ebola_data_2018)
-  ) %>%
-  bind_rows(drc_ebola_data_2018) %>%
-  select(-year) %>%
-  arrange(week) %>%
-  mutate(country = "DRC") %>%
-  mutate(deaths = NA)
-
+    date = as_date(date),
+    week = week - 1
+    ) %>%
+  as_tibble()
 
 # Population from 2018 World Bank estimates (https://data.worldbank.org/indicator/SP.POP.TOTL?locations=CD)
 population <- c(DRC = 84068091)
 
-##  Measurement model: hierarchical model for cases
-## p(C_t | H_t): Negative binomial with mean rho*H_t and variance rho*H_t*(1+k*rho*H_t)
+# ==== Measurement model ==================================================
+# Hierarchical model for cases
+# p(C_t | H_t): Negative binomial with mean rho*H_t and variance rho*H_t*(1+k*rho*H_t)
 dObs <- Csnippet('
   double f;
   if (k > 0.0)
@@ -158,31 +148,14 @@ ebolaModel <- function(
     R_0 = 1e-8
   )
 
-  if (is.null(data)) {
-    if (ctry == "WestAfrica") {
-      dat <- dat %>%
-        group_by(week) %>%
-        summarize(
-          cases = sum(cases, na.rm = TRUE),
-          deaths = sum(deaths, na.rm = TRUE)
-        )
-      } else {
-        dat <- dat %>%
-          filter(county == ctry) %>%
-          select(-county)
-        }
-    } else {
-      dat <- data
-      }
-
   if (na.rm) {
-    dat <- dat %>%
+    data <- data %>%
       filter(!is.na(cases)) %>%
       mutate(week = week - min(week) + 1)
-    }
+  }
 
-  if (type=="cum") {
-    dat <- dat %>%
+  if (type == "cum") {
+    data <- data %>%
       mutate(
         cases = cumsum(cases),
         deaths = cumsum(deaths)
@@ -191,7 +164,7 @@ ebolaModel <- function(
 
   ## Create the pomp object
   pomp(
-    data = dat[c("week", "cases", "deaths")],
+    data = data[c("week", "cases", "deaths")],
     times = "week",
     t0 = 0,
     params = theta,
@@ -219,5 +192,5 @@ ebolaModel <- function(
       x0[comp.names] <- round(N * frac / sum(frac))
       x0
       }
-    ) -> po
+    )
   }
