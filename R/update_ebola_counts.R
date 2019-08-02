@@ -6,6 +6,8 @@
 # === Lib =================================================================== #
 library(rhdx) # devtools::install_github("dickoa/rhdx")
 library(readr)
+library(dplyr)
+library(lubridate)
 
 # Set dirs
 data_folder <- normalizePath("data", winslash = "/", mustWork = TRUE)
@@ -24,6 +26,40 @@ health_zone_figures <- dataset %>%
   read_resource(folder = tmp_folder) %>%
   write_csv(file.path(data_folder,"health_zone_counts.csv"))
 
+# Cumulative cases and deaths country-wide for model
+drc_ebola_data <- health_zone_figures %>%
+  mutate(date = as_date(report_date)) %>%
+  group_by(country, date) %>%
+  summarize(
+    cases = sum(total_cases, na.rm = TRUE),
+    deaths = sum(total_deaths, na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  arrange(date) %>%
+  mutate(
+    epi_week = epiweek(date),
+    year = epiyear(date)
+  ) %>%
+  group_by(epi_week, year) %>%
+  mutate(sort_date = min(date)) %>%
+  ungroup() %>%
+  arrange(sort_date) %>%
+  group_by(sort_date) %>%
+  mutate(week = group_indices()) %>%
+  ungroup() %>%
+  select(country, week, date, cases, deaths) %>%
+  arrange(date) %>%
+  group_by(week) %>%
+  filter(date == max(date)) %>%
+  ungroup() %>%
+  arrange(date) %>%
+  mutate(
+    new_cases = cases - lag(cases, default = NA),
+    new_deaths = deaths - lag(deaths, default = NA)
+  ) %>%
+  write_csv(file.path(data_folder,"drc_model_counts.csv"))
+
+  
 # === Download shapefiles ================================================== #
 # https://data.humdata.org/dataset/democratic-republic-of-congo-health-boundaries
 shape_dataset <- pull_dataset("9690f4f5-d9e5-469a-b9dd-ae59b629a853")
