@@ -6,6 +6,16 @@ library(pomp)
 library(dplyr)
 library(lubridate)
 
+# === Define folder locations =============================================
+tmp_dir <- normalizePath("../tmp", winslash = "/", mustWork = FALSE)
+data_dir <- normalizePath("../data", winslash = "/", mustWork = TRUE)
+
+# Make sure we have a tmp_dir
+# and that we don't track any files
+if (!dir.exists(tmp_dir)) {
+  dir.create(tmp_dir)
+  cat("*.*", file = file.path(tmp_dir, ".gitignore"))
+}
 # === Load Ebola counts ===================================================
 # NOTE: 
 # - This pulls from a live CSV that is updated by update_ebola_counts.R
@@ -13,7 +23,7 @@ library(lubridate)
 #   match up.
 # - A better fit might be achieved with taking cumulative counts as-is, or
 #   refining calc to use only confirmed cases, etc.
-drc_ebola_data <- read.csv("data/drc_model_counts.csv", stringsAsFactors = FALSE) %>%
+drc_ebola_data <- read.csv(file.path(data_dir, "drc_model_counts.csv"), stringsAsFactors = FALSE) %>%
   select(
     country, week, date, 
     cases = new_cases, deaths = new_deaths
@@ -169,6 +179,7 @@ ebolaModel <- function(
     t0 = 0,
     params = theta,
     globals = globs,
+    cdir = tmp_dir,
     obsnames = c("cases", "deaths"),
     statenames = c("S", "E1", "I", "R", "N_EI", "N_IR"),
     accumvars = if (type == "raw") c("N_EI", "N_IR") else character(0),

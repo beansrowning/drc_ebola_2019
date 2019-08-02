@@ -13,20 +13,26 @@ library(doParallel)
 library(iterators)
 
 # Load Ebola data and models
-source("R/model.R")
+source("model.R")
 
-# Run Preliminary model
+# Build Preliminary model
 models <- c(
   raw = ebolaModel(country = "DRC", data = drc_ebola_data, type = "raw", na.rm = TRUE),
   cum = ebolaModel(country = "DRC", data = drc_ebola_data, type = "cum", na.rm = TRUE)
 )
 
-# Start cluster
-# BUG: POMP models do not seem to be thread-safe.
-# Concurrent loading of shared libraries throws error
-# clust <- makeCluster(4, ifelse(.Platform$OS.type == "windows", "PSOCK", "FORK"))
-# registerDoParallel(clust)
-registerDoSEQ()
+# === Start cluster =============================================================
+n_cores <- ifelse(
+  Sys.getenv("N_CORES") == character(1),
+  detectCores() - 1,
+  as.numeric(Sys.getenv("N_CORES"))
+)
+
+sprintf("Making cluster with %d cores", n_cores)
+
+clust <- makeCluster(n_cores, ifelse(.Platform$OS.type == "windows", "PSOCK", "FORK"))
+registerDoParallel(clust)
+
 # Define helper function to save results to file
 bake <- function (file, expr) {
   if (file.exists(file)) {
@@ -40,7 +46,7 @@ bake <- function (file, expr) {
 
 # === Trajectory matching the R0 profile ========================================================
 
-profR0 <- bake(file = "output/R0_fits.rds", {
+profR0 <- bake(file = "../output/model_fits/R0_fits.rds", {
 
   starts <- profileDesign(
     R0 = seq(1, 3, length = 200),
@@ -123,7 +129,7 @@ profR0 <- bake(file = "output/R0_fits.rds", {
 })
 
 # === Trajectory Matching the k profile ===================================================
-profk <- bake(file = "output/k_fits.rds", {
+profk <- bake(file = "../output/model_fits/k_fits.rds", {
 
   starts <- profileDesign(
     k = seq(0, 1, length = 100),
@@ -211,7 +217,7 @@ profTM <- profR0 %>%
   )
 
 # === Iterated Filtering on the R0 profile ================================================= #
-profR0_if <- bake(file = "output/R0_fits_if.rds", {
+profR0_if <- bake(file = "../output/model_fits/R0_fits_if.rds", {
   pars <- profTM %>%
     filter(profile == "R0") %>%
     group_by(country, type) %>%
@@ -297,7 +303,7 @@ profR0_if <- bake(file = "output/R0_fits_if.rds", {
 
 ## Filter once more on maxima
 
-profR0_if <- bake(file = "output/R0_fits_if_maxima.rds",{
+profR0_if <- bake(file = "../output/model_fits/R0_fits_if_maxima.rds",{
 
   pars <- profR0_if %>%
     dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
@@ -349,7 +355,7 @@ profR0_if <- bake(file = "output/R0_fits_if_maxima.rds",{
 
 ## Iterated filtering, k profile
 
-profk_if <- bake(file = "output/k_fits_if.rds", {
+profk_if <- bake(file = "../output/model_fits/k_fits_if.rds", {
 
   pars <- profTM %>%
     dplyr::filter(profile == "k") %>%
@@ -429,7 +435,7 @@ profk_if <- bake(file = "output/k_fits_if.rds", {
 
 ## Filter once more on maxima
 
-profk_if <- bake(file = "output/k_fits_if_maxima.rds", {
+profk_if <- bake(file = "../output/model_fits/k_fits_if_maxima.rds", {
 
   pars <- profk_if %>%
     dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
@@ -491,5 +497,5 @@ all_models <- profIF %>%
       mutate(model = "Deterministic")
   )
 
-saveRDS("output/model_profiles.RDS")
+saveRDS("../output/model_fits/model_profiles.RDS")
 closeCluster(clust)
