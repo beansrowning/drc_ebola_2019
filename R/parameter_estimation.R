@@ -24,9 +24,9 @@ models <- c(
 # Start cluster
 # BUG: POMP models do not seem to be thread-safe.
 # Concurrent loading of shared libraries throws error
-clust <- makeCluster(4, ifelse(.Platform$OS.type == "windows", "PSOCK", "FORK"))
-registerDoParallel(clust)
-
+# clust <- makeCluster(4, ifelse(.Platform$OS.type == "windows", "PSOCK", "FORK"))
+# registerDoParallel(clust)
+registerDoSEQ()
 # Define helper function to save results to file
 bake <- function (file, expr) {
   if (file.exists(file)) {
@@ -140,7 +140,9 @@ profk <- bake(file = "output/k_fits.rds", {
     foreach(
       type = c("raw", "cum"),
       .combine = rbind,
-      .inorder = FALSE) %dopar% {
+      .inorder = FALSE,
+      .packages = c("pomp", "subplex")
+    ) %dopar% {
 
       tm <- models[[type]]
 
@@ -152,8 +154,7 @@ profk <- bake(file = "output/k_fits.rds", {
 
       tm <- traj_objfun(
         tm,
-        est = c("R0", "E_0", "I_0"),
-        transform = TRUE
+        est = c("R0", "E_0", "I_0")
       )
 
       if (coef(tm, "E_0") == 0) {
@@ -204,7 +205,7 @@ profk <- bake(file = "output/k_fits.rds", {
 
 # Combine all trajectory matching
 profTM <- profR0 %>%
-  mutate(profile = "RO") %>%
+  mutate(profile = "R0") %>%
   bind_rows(
     mutate(profk, profile = "k")
   )
@@ -214,9 +215,9 @@ profR0_if <- bake(file = "output/R0_fits_if.rds", {
   pars <- profTM %>%
     filter(profile == "R0") %>%
     group_by(country, type) %>%
-    filter(is.finite(loglik) & loglik > max(loglik) - 20) %>%
+    dplyr::filter(is.finite(loglik) & loglik > max(loglik) - 20) %>%
     group_by(R0, add = TRUE) %>%
-    filter(loglik == max(loglik)) %>%
+    dplyr::filter(loglik == max(loglik)) %>%
     ungroup() %>%
     select(-c(loglik, etime, conv, profile))
 
@@ -224,7 +225,8 @@ profR0_if <- bake(file = "output/R0_fits_if.rds", {
   foreach (
     start = iter(pars, by = "row"),
     .combine = rbind,
-    .inorder = FALSE
+    .inorder = FALSE,
+    .packages = c("pomp", "dplyr")
   ) %dopar% {
       tic <- Sys.time()
 
@@ -246,9 +248,13 @@ profR0_if <- bake(file = "output/R0_fits_if.rds", {
       }
 
       mf <- mif2(
-        po, 
+        po,
         Nmif = 10,
-        rw.sd = c(k = 0.02, E_0 = 1,I_0 = 1),
+        rw.sd = rw.sd(
+          k = 0.02,
+          E_0 = 1,
+          I_0 = 1
+        ),
         Np = 2000,
         cooling.type = "hyperbolic",
         cooling.fraction.50 = 0.5,
@@ -294,16 +300,18 @@ profR0_if <- bake(file = "output/R0_fits_if.rds", {
 profR0_if <- bake(file = "output/R0_fits_if_maxima.rds",{
 
   pars <- profR0_if %>%
-    filter(is.finite(loglik) & nfail.max == 0) %>%
+    dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
     group_by(type, R0) %>%
-    filter(rank(-loglik) <= 5) %>%
+    dplyr::filter(rank(-loglik) <= 5) %>%
     ungroup() %>%
     select(-c(loglik, loglik.se, nfail.max, nfail.min, etime))
 
   foreach(
     start = iter(pars, by = "row"),
     .combine = rbind,
-    .inorder = FALSE) %dopar% {
+    .inorder = FALSE,
+    .packages = c("pomp", "dplyr")
+    ) %dopar% {
       tic <- Sys.time()
 
       type <- as.character(start$type)
@@ -344,18 +352,19 @@ profR0_if <- bake(file = "output/R0_fits_if_maxima.rds",{
 profk_if <- bake(file = "output/k_fits_if.rds", {
 
   pars <- profTM %>%
-    filter(profile == "k") %>%
+    dplyr::filter(profile == "k") %>%
     group_by(country, type) %>%
-    filter(is.finite(loglik) & loglik > max(loglik) - 20) %>%
+    dplyr::filter(is.finite(loglik) & loglik > max(loglik) - 20) %>%
     group_by(k, add = TRUE) %>%
-    filter(loglik == max(loglik)) %>%
+    dplyr::filter(loglik == max(loglik)) %>%
     ungroup() %>%
     select(-c(loglik, etime, conv, profile))
 
   foreach (
     start = iter(pars, by = "row"),
     .combine = rbind,
-    .inorder = FALSE
+    .inorder = FALSE,
+    .packages = c("pomp", "dplyr")
   ) %dopar% {
       tic <- Sys.time()
 
@@ -379,7 +388,11 @@ profk_if <- bake(file = "output/k_fits_if.rds", {
       mf <- mif2(
         po,
         Nmif = 10,
-        rw.sd = c(R0 = 0.02, E_0 = 1, I_0 = 1),
+        rw.sd = rw.sd(
+          R0 = 0.02,
+          E_0 = 1,
+          I_0 = 1
+        ),
         ivps = c("E_0", "I_0"),
         Np = 2000,
         cooling.type = "hyperbolic",
@@ -419,16 +432,17 @@ profk_if <- bake(file = "output/k_fits_if.rds", {
 profk_if <- bake(file = "output/k_fits_if_maxima.rds", {
 
   pars <- profk_if %>%
-    filter(is.finite(loglik) & nfail.max == 0) %>%
+    dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
     group_by(type, R0) %>%
-    filter(rank(-loglik) <= 5) %>%
+    dplyr::filter(rank(-loglik) <= 5) %>%
     ungroup() %>%
     select(-c(loglik, loglik.se, nfail.max, nfail.min, etime))
 
   foreach(
     start = iter(pars, by = "row"),
     .combine = rbind,
-    .inorder = FALSE
+    .inorder = FALSE,
+    .packages = c("pomp", "dplyr")
   ) %dopar% {
       tic <- Sys.time()
 
@@ -439,7 +453,7 @@ profk_if <- bake(file = "output/k_fits_if_maxima.rds", {
         unlist()
 
       po <- models[[type]]
-      coef(po,names(st)) <- unname(st)
+      coef(po, names(st)) <- unname(st)
 
       ## Runs 10 particle filters to assess Monte Carlo error in likelihood
       pf <- try(replicate(10, pfilter(po, Np = 5000, max.fail = Inf)))
