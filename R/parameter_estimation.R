@@ -377,7 +377,7 @@ profk_if <- bake(file = file.path(out_dir, "k_fits_if.rds"), {
     type <- as.character(start$type)
 
     st <- start %>%
-      select(-county, -type) %>%
+      select(-country, -type) %>%
       unlist()
 
     po <- models[[type]]
