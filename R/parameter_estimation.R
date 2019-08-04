@@ -27,7 +27,7 @@ models <- c(
 n_cores <- ifelse(
   Sys.getenv("N_CORES") == character(1),
   detectCores() - 1,
-  as.numeric(Sys.getenv("N_CORES") - 1)
+  as.numeric(Sys.getenv("N_CORES")) - 1
 )
 
 sprintf("Making cluster with %d cores", n_cores)
