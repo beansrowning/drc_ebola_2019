@@ -499,5 +499,5 @@ all_models <- profIF %>%
       mutate(model = "Deterministic")
   )
 
-saveRDS(file.path(out_dir, "model_profiles.RDS"))
-closeCluster(clust)
+saveRDS(all_models, file.path(out_dir, "model_profiles.RDS"))
+stopCluster(clust)
