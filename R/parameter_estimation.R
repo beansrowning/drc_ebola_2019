@@ -15,6 +15,8 @@ library(iterators)
 # Load Ebola data and models
 source("R/model.R")
 
+out_dir <- normalizePath("output/model_fits", winslash = "/", mustWork = TRUE)
+
 # Build Preliminary model
 models <- c(
   raw = ebolaModel(country = "DRC", data = drc_ebola_data, type = "raw", na.rm = TRUE),
@@ -46,7 +48,7 @@ bake <- function(file, expr) {
 
 # === Trajectory matching the R0 profile ========================================================
 
-profR0 <- bake(file = "output/model_fits/R0_fits.rds", {
+profR0 <- bake(file = file.path(out_dir, "R0_fits.rds"), {
   starts <- profileDesign(
     R0 = seq(1, 3, length = 200),
     upper = c(k = 1),
@@ -128,7 +130,7 @@ profR0 <- bake(file = "output/model_fits/R0_fits.rds", {
 })
 
 # === Trajectory Matching the k profile ===================================================
-profk <- bake(file = "output/model_fits/k_fits.rds", {
+profk <- bake(file = file.path(out_dir, "k_fits.rds"), {
   starts <- profileDesign(
     k = seq(0, 1, length = 100),
     upper = c(R0 = 1),
@@ -215,11 +217,11 @@ profTM <- profR0 %>%
   )
 
 # === Iterated Filtering on the R0 profile ================================================= #
-profR0_if <- bake(file = "output/model_fits/R0_fits_if.rds", {
+profR0_if <- bake(file = file.path(out_dir, "R0_fits_if.rds"), {
   pars <- profTM %>%
     filter(profile == "R0") %>%
     group_by(country, type) %>%
-    dplyr::filter(is.finite(loglik) & loglik > max(loglik) - 20) %>%
+    dplyr::filter(is.finite(loglik) & loglik > max(loglik, na.rm = TRUE) - 20) %>%
     group_by(R0, add = TRUE) %>%
     dplyr::filter(loglik == max(loglik)) %>%
     ungroup() %>%
@@ -237,7 +239,7 @@ profR0_if <- bake(file = "output/model_fits/R0_fits_if.rds", {
     type <- as.character(start$type)
 
     st <- start %>%
-      select(-country, -type) %>%
+      select(-type) %>%
       unlist()
 
     po <- models[[type]]
@@ -287,6 +289,7 @@ profR0_if <- bake(file = "output/model_fits/R0_fits_if.rds", {
     units(etime) <- "hours"
 
     data.frame(
+      country = "DRC",
       type = type,
       as.list(coef(mf)),
       loglik = ll[1],
@@ -300,11 +303,12 @@ profR0_if <- bake(file = "output/model_fits/R0_fits_if.rds", {
 
 ## Filter once more on maxima
 
-profR0_if <- bake(file = "output/model_fits/R0_fits_if_maxima.rds", {
+profR0_if <- bake(file = file.path(out_dir, "R0_fits_if_maxima.rds"), {
   pars <- profR0_if %>%
     dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
     group_by(type, R0) %>%
-    dplyr::filter(rank(-loglik) <= 5) %>%
+    arrange(-loglik) %>%
+    slice(1:5) %>%
     ungroup() %>%
     select(-c(loglik, loglik.se, nfail.max, nfail.min, etime))
 
@@ -338,6 +342,7 @@ profR0_if <- bake(file = "output/model_fits/R0_fits_if_maxima.rds", {
     nfail <- sapply(pf, getElement, "nfail")
 
     data.frame(
+      country = "DRC",
       type = type,
       as.list(coef(po)),
       loglik = ll[1],
@@ -351,11 +356,11 @@ profR0_if <- bake(file = "output/model_fits/R0_fits_if_maxima.rds", {
 
 ## Iterated filtering, k profile
 
-profk_if <- bake(file = "output/model_fits/k_fits_if.rds", {
+profk_if <- bake(file = file.path(out_dir, "k_fits_if.rds"), {
   pars <- profTM %>%
     dplyr::filter(profile == "k") %>%
     group_by(country, type) %>%
-    dplyr::filter(is.finite(loglik) & loglik > max(loglik) - 20) %>%
+    dplyr::filter(is.finite(loglik) & loglik > max(loglik, na.rm = TRUE) - 20) %>%
     group_by(k, add = TRUE) %>%
     dplyr::filter(loglik == max(loglik)) %>%
     ungroup() %>%
@@ -417,6 +422,7 @@ profk_if <- bake(file = "output/model_fits/k_fits_if.rds", {
     units(etime) <- "hours"
 
     data.frame(
+      country = "DRC",
       type = type,
       as.list(coef(mf)),
       loglik = ll[1],
@@ -430,11 +436,12 @@ profk_if <- bake(file = "output/model_fits/k_fits_if.rds", {
 
 ## Filter once more on maxima
 
-profk_if <- bake(file = "output/model_fits/k_fits_if_maxima.rds", {
+profk_if <- bake(file = file.path(out_dir, "k_fits_if_maxima.rds"), {
   pars <- profk_if %>%
     dplyr::filter(is.finite(loglik) & nfail.max == 0) %>%
     group_by(type, R0) %>%
-    dplyr::filter(rank(-loglik) <= 5) %>%
+    arrange(-loglik) %>%
+    slice(1:5) %>%
     ungroup() %>%
     select(-c(loglik, loglik.se, nfail.max, nfail.min, etime))
 
@@ -467,6 +474,7 @@ profk_if <- bake(file = "output/model_fits/k_fits_if_maxima.rds", {
     nfail <- sapply(pf, getElement, "nfail")
 
     data.frame(
+      country = "DRC",
       type = type,
       as.list(coef(po)),
       loglik = ll[1],
@@ -491,5 +499,5 @@ all_models <- profIF %>%
       mutate(model = "Deterministic")
   )
 
-saveRDS("output/model_fits/model_profiles.RDS")
+saveRDS(file.path(out_dir, "model_profiles.RDS"))
 closeCluster(clust)

@@ -7,8 +7,8 @@ library(dplyr)
 library(lubridate)
 
 # === Define folder locations =============================================
-tmp_dir <- normalizePath("../tmp", winslash = "/", mustWork = FALSE)
-data_dir <- normalizePath("../data", winslash = "/", mustWork = TRUE)
+tmp_dir <- normalizePath("tmp", winslash = "/", mustWork = FALSE)
+data_dir <- normalizePath("data", winslash = "/", mustWork = TRUE)
 
 # Make sure we have a tmp_dir
 # and that we don't track any files
