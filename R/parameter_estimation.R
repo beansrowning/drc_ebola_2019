@@ -96,6 +96,11 @@ profR0 <- bake(file = file.path(out_dir, "R0_fits.rds"), {
         control = list(maxit = 1e5)
       )
 
+      # Re-run parameter values through
+      # stateful function to make sure values are
+      # accurate
+      tm(tm_optim$par)
+
       toc <- Sys.time()
 
       # Compute system time
@@ -174,6 +179,12 @@ profk <- bake(file = file.path(out_dir, "k_fits.rds"), {
         par = coef(tm, c("R0", "E_0", "I_0")),
         control = list(maxit = 1e5)
       )
+
+      # Re-run parameter values through
+      # stateful function to make sure values are
+      # accurate
+      # See help file for traj_objfun
+      tm(tm_optim$par)
 
       toc <- Sys.time()
 

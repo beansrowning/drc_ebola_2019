@@ -41,6 +41,8 @@ population <- c(DRC = 84068091)
 # ==== Measurement model ==================================================
 # Hierarchical model for cases
 # p(C_t | H_t): Negative binomial with mean rho*H_t and variance rho*H_t*(1+k*rho*H_t)
+# Where: Rho = Reporting probability
+#        k = Reporting overdispersion
 dObs <- Csnippet('
   double f;
   if (k > 0.0)
@@ -134,7 +136,7 @@ ebolaModel <- function(
   ## Incubation period is supposed to be Gamma distributed with shape parameter 3
   ## and mean 11.4 days.  The discrete-time formula is used to calculate the
   ## corresponding alpha (cf He et al., Interface 2010).
-  ## Case-fatality ratio is fixed at 0.7 (cf WHO Ebola response team, NEJM 2014)
+  ## Case-fatality ratio is fixed at 0.67 (Aug 2019 WHO, https://www.who.int/csr/don/02-august-2019-ebola-drc/en/)
   incubation_period <- 11.4 / 7
   infectious_period <- 7 / 7
   index_case <- 10 / pop
@@ -149,7 +151,7 @@ ebolaModel <- function(
     alpha = -1 / (nstageE * dt) * log(1 - nstageE * dt / incubation_period),
     gamma = -log(1 - dt / infectious_period) / dt,
     rho = 0.2,
-    cfr = 0.7,
+    cfr = 0.67,
     k = 0,
     S_0 = 1 - index_case,
     E_0 = index_case / 2 - 5e-9,
