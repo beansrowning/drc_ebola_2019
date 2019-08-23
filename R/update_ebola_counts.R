@@ -72,3 +72,18 @@ health_zones <- shape_dataset %>%
 
 districts$download(folder = file.path(data_folder, "shape_file"), filename = "drc_districts.geojson")
 health_zones$download(folder = file.path(data_folder, "shape_file"), filename = "drc_health_zones.geojson")
+
+# === Download denomonator data ============================================ #
+# https://data.humdata.org/dataset/dr-congo-health-0
+regional_denom <- pull_dataset("70ad1012-189c-4b49-b9f0-b97a71ec4c7b")
+
+all_denom <- regional_denom %>%
+  get_resource(1) %>%
+  read_resource() %>%
+  as_tibble() %>%
+  select(
+    province = PROVINCE,
+    health_zone = Nom,
+    pop = Population
+  ) %>%
+  write_csv(file.path(data_folder, "health_zone_population.csv"))
