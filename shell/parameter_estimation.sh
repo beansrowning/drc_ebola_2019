@@ -4,7 +4,7 @@
 #$ -M <email>
 #$ -m e
 #$ -l mem_free=32G,h_vmem=32G
-#$ -q short.q
+#$ -q all.q
 #$ -pe smp 48
 #$ -e output/logs/$JOB_NAME_error.log
 #$ -o output/logs/$JOB_NAME_out.log
