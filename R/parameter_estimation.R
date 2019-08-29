@@ -14,7 +14,7 @@ library(iterators)
 
 # Load Ebola data and models
 source("R/model.R")
-
+source("R/util.R")
 out_dir <- normalizePath("output/model_fits", winslash = "/", mustWork = TRUE)
 
 # Build Preliminary model
@@ -23,28 +23,9 @@ models <- c(
   cum = ebolaModel(country = "DRC", data = drc_ebola_data, type = "cum", na.rm = TRUE)
 )
 
-# === Start cluster =============================================================
-n_cores <- ifelse(
-  Sys.getenv("N_CORES") == character(1),
-  detectCores() - 1,
-  as.numeric(Sys.getenv("N_CORES")) - 1
-)
-
-sprintf("Making cluster with %d cores", n_cores)
-
-clust <- makeCluster(n_cores, ifelse(.Platform$OS.type == "windows", "PSOCK", "FORK"))
+# === Set up cluster ==============================================
+clust <- make_smp_cluster()
 registerDoParallel(clust)
-
-# Define helper function to save results to file
-bake <- function(file, expr) {
-  if (file.exists(file)) {
-    readRDS(file)
-  } else {
-    val <- eval(expr)
-    saveRDS(val, file = file)
-    val
-  }
-}
 
 # === Trajectory matching the R0 profile ========================================================
 
