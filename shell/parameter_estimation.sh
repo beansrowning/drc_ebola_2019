@@ -11,5 +11,6 @@
 #$ -R y
 export R_LIBS="~R/x86_64-redhat-linux-gnu-library/3.6"
 export N_CORES=48
+module load R/3.6.1
 
 R CMD BATCH R/parameter_estimation.R output/logs/ebola_parameter_estimation.Rout
