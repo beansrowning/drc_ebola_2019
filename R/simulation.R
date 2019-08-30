@@ -36,7 +36,7 @@ sim_dat <- bake(file = file.path(out_dir, "sims.rds"), {
     params = params,
     nsim = nsims,
     seed = 208335746L,
-    as.data.frame = TRUE,
+    format = "data.frame"
     obs = TRUE
   ) %>%
   rename(time = week) %>%
