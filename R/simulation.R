@@ -51,7 +51,7 @@ pompUnload(po)
 
 profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
   fits <- foreach(
-    dat = isplit(simdat, simdat[[".id"]]),
+    dat = isplit(sim_dat, sim_dat[[".id"]]),
     .combine = rbind,
     .inorder = FALSE
   ) %:%
@@ -113,7 +113,7 @@ profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
       .combine = rbind,
       .inorder = FALSE
     ) %dopar% {
-      dat <- simdat %>%
+      dat <- sim_dat %>%
         filter(sim == fit$sim, param_set = fit$param_set) %>%
         select(week, cases, deaths)
 
@@ -173,7 +173,7 @@ fits <- bake(file = file.path(out_dir, "tm-sim-fits.rds"), {
     .combine = rbind,
     .inorder = FALSE,
   ) %dopar% {
-    dat <- simdat %>%
+    dat <- sim_dat %>%
       filter(sim == fit$sim, param_set == fit$param_set) %>%
       select(week, cases, deaths)
 
@@ -232,7 +232,7 @@ tic <- Sys.time()
 
 profiles_ls <- bake(file = "ls-sim-profiles-R0.rds", {
   fits <- foreach(
-    dat = isplit(simdat, simdat[[".id"]]),
+    dat = isplit(sim_dat, sim_dat[[".id"]]),
     .combine = rbind,
     .inorder = FALSE
   ) %:%
@@ -299,7 +299,7 @@ profiles_ls <- bake(file = "ls-sim-profiles-R0.rds", {
       .combine = rbind,
       .inorder = FALSE,
     ) %dopar% {
-      dat <- simdat %>%
+      dat <- sim_dat %>%
         filter(sim == fit$sim) %>%
         select(week, cases, deaths)
 
@@ -361,7 +361,7 @@ fits_ls <- bake(file = "ls-sim-fits.rds", {
     .combine = rbind,
     .inorder = FALSE,
   ) %dopar% {
-    dat <- simdat %>%
+    dat <- sim_dat %>%
       filter(sim == fit$sim, param_set = fit$param_set) %>%
       select(week, cases, deaths)
 
