@@ -12,7 +12,7 @@ make_smp_cluster <- function() {
   n_cores <- ifelse(
     Sys.getenv("N_CORES") == character(1),
     parallel::detectCores() - 1,
-    as.numeric(Sys.getenv("N_CORES") - 1)
+    as.numeric(Sys.getenv("N_CORES")) - 1
   )
 
   message(sprintf("Making cluster with %d cores", n_cores))
