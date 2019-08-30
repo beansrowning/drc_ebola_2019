@@ -6,8 +6,9 @@
 
 library(pomp)
 library(dplyr)
-library(tidyr)
 library(doParallel)
+library(foreach)
+library(iterators)
 
 # Load model and data
 source("R/model.R")
@@ -37,17 +38,20 @@ sim_dat <- bake(file = file.path(out_dir, "sims.rds"), {
     nsim = nsims,
     seed = 208335746L,
     format = "data.frame"
-    obs = TRUE
-  ) %>%
+  ) %>% 
   rename(time = week) %>%
-  mutate(k = params["k", ((as.integer(sim) - 1) %% ncol(params)) + 1])
+  mutate(
+    sim = as.integer(gsub("^(\\d*)_(\\d*)$", "\\2", .id)),
+    param_set = as.integer(gsub("^(\\d*)_(\\d*)$", "\\1", .id)),
+    k = params["k", param_set]
+  )
 })
 
 pompUnload(po)
 
 profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
   fits <- foreach(
-    simul = seq_len(nsims),
+    dat = isplit(simdat, simdat[[".id"]]),
     .combine = rbind,
     .inorder = FALSE
   ) %:%
@@ -57,17 +61,14 @@ profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
       .inorder = FALSE,
       .packages = c("pomp", "subplex", "dplyr")
     ) %dopar% {
-      dat <- simdat %>%
-        filter(sim == simul) %>%
-        select(week, cases, deaths)
 
       tm <- ebolaModel(
         country = "DRC",
-        data = dat,
+        data = select(dat$value, weeks, cases, deaths),
         type = as.character(type)
       )
 
-      st <- params[, (simul - 1) %% 3 + 1]
+      st <- params[, unique(dat$value[["param_set"]])]
       true.k <- unname(st["k"])
       true.R0 <- unname(st["R0"])
       true.rho <- unname(st["rho"])
@@ -90,7 +91,8 @@ profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
       pompUnload(tm)
 
       data.frame(
-        sim = simul,
+        sim = dat$key[[1]],
+        param_set = unique(dat$value[["param_set"]]),
         type = as.character(type),
         true.k = true.k,
         true.R0 = true.R0,
@@ -112,7 +114,7 @@ profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
       .inorder = FALSE
     ) %dopar% {
       dat <- simdat %>%
-        filter(sim == fit$sim) %>%
+        filter(sim == fit$sim, param_set = fit$param_set) %>%
         select(week, cases, deaths)
 
       tm <- ebolaModel(
@@ -148,6 +150,7 @@ profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
 
       data.frame(
         sim = fit$sim,
+        param_set = fit$param_set,
         type = fit$type,
         true.k = fit$true.k,
         true.R0 = fit$true.R0,
@@ -171,7 +174,7 @@ fits <- bake(file = file.path(out_dir, "tm-sim-fits.rds"), {
     .inorder = FALSE,
   ) %dopar% {
     dat <- simdat %>%
-      filter(sim == fit$sim) %>%
+      filter(sim == fit$sim, param_set == fit$param_set) %>%
       select(week, cases, deaths)
 
     tm <- ebolaModel(
@@ -208,6 +211,7 @@ fits <- bake(file = file.path(out_dir, "tm-sim-fits.rds"), {
 
     data.frame(
       sim = fit$sim,
+      param_set = fit$param_set,
       type = fit$type,
       true.k = fit$true.k,
       true.R0 = fit$true.R0,
@@ -228,7 +232,7 @@ tic <- Sys.time()
 
 profiles_ls <- bake(file = "ls-sim-profiles-R0.rds", {
   fits <- foreach(
-    simul = seq_len(nsims),
+    dat = isplit(simdat, simdat[[".id"]]),
     .combine = rbind,
     .inorder = FALSE
   ) %:%
@@ -237,18 +241,15 @@ profiles_ls <- bake(file = "ls-sim-profiles-R0.rds", {
       .combine = rbind,
       .inorder = FALSE
     ) %dopar% {
-      dat <- simdat %>%
-        filter(sim == simsul) %>%
-        select(week, cases, deaths)
 
       tm <- ebolaModel(
         country = "DRC",
-        data = dat,
+        data = select(dat$value, weeks, cases, deaths),
         type = as.character(type),
         least.sq = TRUE
       )
 
-      st <- params[, (simul - 1) %% 3 + 1]
+      st <- params[, unique(dat$value[["param_set"]])]
       true.k <- unname(st["k"])
       true.R0 <- unname(st["R0"])
       true.rho <- unname(st["rho"])
@@ -276,7 +277,8 @@ profiles_ls <- bake(file = "ls-sim-profiles-R0.rds", {
       pompUnload(tm)
 
       data.frame(
-        sim = simul,
+        sim = dat$key[[1]],
+        param_set = unique(dat$value[["param_set"]]),
         type = as.character(type),
         true.k = true.k,
         true.R0 = true.R0,
@@ -360,7 +362,7 @@ fits_ls <- bake(file = "ls-sim-fits.rds", {
     .inorder = FALSE,
   ) %dopar% {
     dat <- simdat %>%
-      filter(sim == fit$sim) %>%
+      filter(sim == fit$sim, param_set = fit$param_set) %>%
       select(week, cases, deaths)
 
     tm <- ebolaModel(
@@ -396,6 +398,7 @@ fits_ls <- bake(file = "ls-sim-fits.rds", {
     data.frame(
       sim = fit$sim,
       type = fit$type,
+      param_set = fit$param_set,
       true.k = fit$true.k,
       true.R0 = fit$true.R0,
       true.rho = fit$true.rho,
