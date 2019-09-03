@@ -64,7 +64,7 @@ profiles <- bake(file = file.path(out_dir, "sim_profiles_R0_deter.rds"), {
 
       tm <- ebolaModel(
         country = "DRC",
-        data = select(dat$value, weeks, cases, deaths),
+        data = select(dat$value, week, cases, deaths),
         type = as.character(type)
       )
 
@@ -244,7 +244,7 @@ profiles_ls <- bake(file = "ls-sim-profiles-R0.rds", {
 
       tm <- ebolaModel(
         country = "DRC",
-        data = select(dat$value, weeks, cases, deaths),
+        data = select(dat$value, week, cases, deaths),
         type = as.character(type),
         least.sq = TRUE
       )
