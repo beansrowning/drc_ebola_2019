@@ -10,12 +10,11 @@ library(dplyr)
 library(lubridate)
 
 # Set dirs
-data_folder <- normalizePath("data", winslash = "/", mustWork = TRUE)
+data_folder <- "data"
 tmp_folder <- tempdir()
 
 # point data source at prod data
 set_rhdx_config(hdx_site = "prod")
-rhdx_cache$cache_path_set(normalizePath(".cache", winslash = "/"))
 
 # === Pull Ebola case and death count dataset ============================== #
 # https://data.humdata.org/dataset/ebola-cases-and-deaths-drc-north-kivu
