@@ -43,7 +43,7 @@ ebola_data <- read.csv("data/health_zone_counts.csv", stringsAsFactors = FALSE) 
   as_tibble() %>%
   mutate_at(vars(matches("date")), ymd) %>%
   mutate(
-    health_zone =  case_when(
+    health_zone = case_when(
       health_zone == "Mangurujipa" ~ "Manguredjipa",
       health_zone == "Rwampara (Bunia)" ~ "Rwampara",
       health_zone == "Kayina" ~ "Kayna",
@@ -167,24 +167,25 @@ foreach(
     "col_scale", "caption_unicode", "bbox_inset"
   ),
   .inorder = FALSE,
-  .combine = function(...) {return(NULL)}
+  .combine = function(...) {
+    return(NULL)
+  }
 ) %dopar% {
-
   case_plot <- case_count %>%
     ggplot(aes(report_date, new_cases)) +
-      geom_bar(aes(fill = report_date == rpt_date), stat = "identity", show.legend = FALSE) +
-      scale_fill_manual(
-        values = c(`TRUE` = "Red", `FALSE` = "Grey50")
-      ) +
-      scale_x_date(
-        date_breaks = "1 month",
-        date_labels = "%b"
-      ) +
-      labs(
-        x = "Date Reported",
-        y = "New Cases (n)"
-      )
-  
+    geom_bar(aes(fill = report_date == rpt_date), stat = "identity", show.legend = FALSE) +
+    scale_fill_manual(
+      values = c(`TRUE` = "Red", `FALSE` = "Grey50")
+    ) +
+    scale_x_date(
+      date_breaks = "1 month",
+      date_labels = "%b"
+    ) +
+    labs(
+      x = "Date Reported",
+      y = "New Cases (n)"
+    )
+
   map_main <- main_base_map %>%
     ggmap() +
     geom_sf(
@@ -192,18 +193,18 @@ foreach(
       aes(fill = total_cases),
       inherit.aes = FALSE,
       show.legend = FALSE
-      ) +
-      geom_rect(
-        aes(xmin = bbox_inset[1], xmax = bbox_inset[3], ymin = bbox_inset[2], ymax = bbox_inset[4]),
-        fill = "transparent",
-        size = 1,
-        color = "black"
-      ) +
-      theme_map() +
-      theme(
-        panel.grid.major = element_line("transparent")
-      ) +
-      scale_fill_manual(values = col_scale, na.value = col_scale[1])
+    ) +
+    geom_rect(
+      aes(xmin = bbox_inset[1], xmax = bbox_inset[3], ymin = bbox_inset[2], ymax = bbox_inset[4]),
+      fill = "transparent",
+      size = 1,
+      color = "black"
+    ) +
+    theme_map() +
+    theme(
+      panel.grid.major = element_line("transparent")
+    ) +
+    scale_fill_manual(values = col_scale, na.value = col_scale[1])
 
   map_inset <- inset_base_map %>%
     ggmap() +
@@ -213,37 +214,37 @@ foreach(
       alpha = 0.7,
       inherit.aes = FALSE
     ) +
-      coord_sf(xlim = bbox_inset[c(1,3)], ylim = bbox_inset[c(2,4)], expand = FALSE) +
-      theme_map() +
-      theme(
-        panel.grid.major = element_line("transparent"),
-        legend.position = "right"
-      ) +
-      scale_fill_manual(
-        values = col_scale,
-        breaks = levels(pull(data, total_cases)),
-        na.value = col_scale[1],
-        drop = FALSE
-      ) +
-      labs(
-        fill = "Total Cases"
-      )
+    coord_sf(xlim = bbox_inset[c(1, 3)], ylim = bbox_inset[c(2, 4)], expand = FALSE) +
+    theme_map() +
+    theme(
+      panel.grid.major = element_line("transparent"),
+      legend.position = "right"
+    ) +
+    scale_fill_manual(
+      values = col_scale,
+      breaks = levels(pull(data, total_cases)),
+      na.value = col_scale[1],
+      drop = FALSE
+    ) +
+    labs(
+      fill = "Total Cases"
+    )
 
-    plot_all <- (map_main + map_inset + plot_layout(ncol = 2, widths = c(2, 1))) / case_plot + 
-      plot_annotation(
-        title = "Total Ebola Cases in Democratic Republic of Congo by District",
-        subtitle = sprintf(
-          "%s, n = %s  (confirmed + probable)",
-          as.character(rpt_date, format = "%d %B %Y"),
-          case_count %>%
-            filter(report_date == rpt_date) %>%
-            pull(total_cases) %>%
-            format(big.mark = ",")
-        ),
-        caption = enc2utf8(caption_unicode)
-        ) +
-      plot_layout(nrow = 2, heights = c(3, 1))
-  
+  plot_all <- (map_main + map_inset + plot_layout(ncol = 2, widths = c(2, 1))) / case_plot +
+    plot_annotation(
+      title = "Total Ebola Cases in Democratic Republic of Congo by District",
+      subtitle = sprintf(
+        "%s, n = %s  (confirmed + probable)",
+        as.character(rpt_date, format = "%d %B %Y"),
+        case_count %>%
+          filter(report_date == rpt_date) %>%
+          pull(total_cases) %>%
+          format(big.mark = ",")
+      ),
+      caption = enc2utf8(caption_unicode)
+    ) +
+    plot_layout(nrow = 2, heights = c(3, 1))
+
   CairoPNG(sprintf("output/graphic_frame_%03d.png", i), width = 1280, height = 720)
 
   print(plot_all)

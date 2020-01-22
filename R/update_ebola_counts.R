@@ -56,9 +56,9 @@ drc_ebola_data <- health_zone_figures %>%
     new_cases = cases - lag(cases, default = NA),
     new_deaths = deaths - lag(deaths, default = NA)
   ) %>%
-  write_csv(file.path(data_folder,"drc_model_counts.csv"))
+  write_csv(file.path(data_folder, "drc_model_counts.csv"))
 
-  
+
 # === Download shapefiles ================================================== #
 # https://data.humdata.org/dataset/democratic-republic-of-congo-health-boundaries
 shape_dataset <- pull_dataset("9690f4f5-d9e5-469a-b9dd-ae59b629a853")
